@@ -27,33 +27,19 @@ namespace clsPersonPresentaionLayer
             int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out Id);
 
 
-            Form personform = new frmPerson(Id);
-
-
 
             //clsPerson person = new clsPerson(cells[0],);
-            if (personform.ShowDialog() != DialogResult.OK)
-            {
+            if (new frmPerson(Id).ShowDialog() == DialogResult.OK) cboxFilterBy.SelectedIndex = 0;
 
-                DataTable People = GetAllPeople();
-                label1.Text = "Records : " + People.Rows.Count;
-
-                dataGridView1.DataSource = People;
-            }
 
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            var personform = new frmPerson(-1);
-            if (personform.ShowDialog() != DialogResult.OK)
-            {
 
-                DataTable People = GetAllPeople();
-                label1.Text = "Records : " + People.Rows.Count;
+            if (new frmPerson(-1).ShowDialog() == DialogResult.OK) cboxFilterBy.SelectedIndex = 0;
 
-                dataGridView1.DataSource = People;
-            }
+
 
 
 
@@ -147,7 +133,7 @@ namespace clsPersonPresentaionLayer
 
 
             char keyPressed = e.KeyChar;
-            int temp;
+
             switch (cboxFilterBy.SelectedItem.ToString())
             {
 
