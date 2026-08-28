@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -104,6 +106,10 @@
       <Project>{e533f207-e07a-4d21-90bd-95a635e42ccc}</Project>
       <Name>DVLDBusinessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ContactsDataAccessLayer\DVLDDataAccessLayer.csproj">
+      <Project>{DCCC4184-857C-4F65-88B3-8E1CCEA8B9E7}</Project>
+      <Name>DVLDDataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images %283%29.png" />
@@ -132,6 +138,7 @@
   <ItemGroup>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPeople.resx">
       <DependentUpon>frmPeople.cs</DependentUpon>
@@ -146,6 +153,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contacts\Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image Aug 28, 2026, 07_55_30 PM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9166885_test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91668856_test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image Aug 11, 2026, 01_05_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nice.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

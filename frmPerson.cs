@@ -1,8 +1,10 @@
 ﻿using clsCountryBusinessLayer;
 using clsPersonBusinessLayer;
+using Contacts.Properties;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static clsPersonDataAccessLayer.clsPersonDataAccess;
 
 namespace Persons
 {
@@ -30,6 +32,7 @@ namespace Persons
         private void _FillCountriesInComoboBox()
         {
             DataTable dtCountries = clsCountry.GetAllCountries();
+
 
             foreach (DataRow row in dtCountries.Rows)
             {
@@ -71,14 +74,35 @@ namespace Persons
             txtEmail.Text = _Person.Email;
             txtPhone.Text = _Person.Phone;
             txtAddress.Text = _Person.Address;
+            txtNationalNo.Text = _Person.NationalNo;
             dtpDateOfBirth.Value = _Person.DateOfBirth;
+            if (_Person.Gender == clsPersonDataAccessLayer.clsPersonDataAccess.enGender.Male)
+            {
+                radioMale.Checked = true;
+            }
+            else
+            {
+                radioButton2.Checked = true;
+            }
+
 
             if (_Person.ImagePath != "")
             {
                 pictureBox1.Load(_Person.ImagePath);
             }
+            else
+            {
 
-            pictureBox1.Visible = (_Person.ImagePath != "");
+
+
+                pictureBox1.Image = _Person.Gender == clsPersonDataAccessLayer.clsPersonDataAccess.enGender.Male ? Resources.male : Resources.female;
+
+
+
+            }
+
+
+            //pictureBox1.Visible = (_Person.ImagePath != "");
 
             //this will select the country in the combobox.
             cbCountry.SelectedIndex = cbCountry.FindString(clsCountry.Find(_Person.NationalityCountryID).Name);
@@ -103,21 +127,26 @@ namespace Persons
             _Person.Address = txtAddress.Text;
             _Person.DateOfBirth = dtpDateOfBirth.Value;
             _Person.NationalityCountryID = NationalityCountryID;
+            _Person.NationalNo = txtNationalNo.Text;
+            _Person.Gender = (radioMale.Checked) ? enGender.Male : enGender.Female;
 
 
-            if (pictureBox1.ImageLocation != null)
-                _Person.ImagePath = pictureBox1.ImageLocation;
-            else
-                _Person.ImagePath = "";
 
             if (_Person.Save())
+            {
                 MessageBox.Show("Data Saved Successfully.");
+
+            }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.");
 
+
+            //this.Close();
             _Mode = enMode.Update;
             lblMode.Text = "Edit Person ID = " + _Person.ID;
             lblPersonID.Text = _Person.ID.ToString();
+
+            //delegate DialogResult.OK;
 
 
         }
@@ -140,7 +169,41 @@ namespace Persons
 
         }
 
-        private void llOpenFileDialog_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+
+        private void llRemoveImage_LinkClicked(object sender, EventArgs e)
+        {
+
+            _Person.ImagePath = "";
+            pictureBox1.Image =
+
+                 radioMale.Checked ?
+                   Resources.male : Resources.female;
+
+
+            //pictureBox1.Visible = false;
+
+
+        }
+
+        private void radioGenderClicked(object sender, EventArgs e)
+        {
+            if (_Person.ImagePath == "")
+            {
+
+                pictureBox1.Image =
+
+                  radioMale.Checked ?
+                    Resources.male : Resources.female;
+
+
+
+            }
+
+
+        }
+
+        private void llOpenFileDialog_LinkClicked(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             openFileDialog1.FilterIndex = 1;
@@ -148,22 +211,13 @@ namespace Persons
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // Process the selected file
+
                 string selectedFilePath = openFileDialog1.FileName;
-                //MessageBox.Show("Selected Image is:" + selectedFilePath);
 
                 pictureBox1.Load(selectedFilePath);
-                // ...
+                _Person.ImagePath = selectedFilePath;
+
             }
-        }
-
-        private void llRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-            pictureBox1.ImageLocation = null;
-            pictureBox1.Visible = false;
-
-
         }
     }
 }

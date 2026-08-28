@@ -34,8 +34,8 @@ namespace Contacts
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +81,13 @@ namespace Contacts
             this.toolStripMenuItem6.Text = "Drivers";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Image = global::Contacts.Properties.Resources._91668856_test;
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(197, 94);
+            this.toolStripMenuItem8.Text = "Users";
+            // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Image = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_09_40_AM;
@@ -88,17 +95,13 @@ namespace Contacts
             this.toolStripMenuItem7.Size = new System.Drawing.Size(348, 94);
             this.toolStripMenuItem7.Text = "Account Settings";
             // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Image = global::Contacts.Properties.Resources._9166885;
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(197, 94);
-            this.toolStripMenuItem8.Text = "Users";
-            // 
             // frmMain
             // 
+            this.BackgroundImage = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_28__2026__07_55_30_PM;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1271, 556);
             this.Controls.Add(this.menuStrip2);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmMain";
