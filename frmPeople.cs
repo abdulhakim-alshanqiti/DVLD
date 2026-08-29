@@ -27,9 +27,7 @@ namespace clsPersonPresentaionLayer
             int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out Id);
 
 
-
-            //clsPerson person = new clsPerson(cells[0],);
-            if (new frmPerson(Id).ShowDialog() == DialogResult.OK) cboxFilterBy.SelectedIndex = 0;
+            if (new frmPerson(Id).ShowDialog() == DialogResult.OK) RefreshDataGrid();
 
 
         }
@@ -37,15 +35,14 @@ namespace clsPersonPresentaionLayer
         private void button1_Click(object sender, System.EventArgs e)
         {
 
-            if (new frmPerson(-1).ShowDialog() == DialogResult.OK) cboxFilterBy.SelectedIndex = 0;
+            if (new frmPerson(-1).ShowDialog() == DialogResult.OK) RefreshDataGrid();
 
 
 
 
 
         }
-
-        private void filterTextChange(object sender, System.EventArgs e)
+        private void RefreshDataGrid()
         {
             DataTable table = GetAllPeople();
 
@@ -113,7 +110,12 @@ namespace clsPersonPresentaionLayer
 
 
             dataGridView1.DataSource = view;
+        }
 
+        private void filterTextChange(object sender, System.EventArgs e)
+        {
+
+            RefreshDataGrid();
 
         }
 
@@ -168,6 +170,16 @@ namespace clsPersonPresentaionLayer
 
             }
 
+
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            int Id = -1;
+            int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out Id);
+
+
+            if (new frmPersonDetails(Id).ShowDialog() == DialogResult.OK) RefreshDataGrid();
 
         }
     }
