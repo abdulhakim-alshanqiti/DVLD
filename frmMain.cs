@@ -1,9 +1,8 @@
-﻿using clsPersonPresentaionLayer;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Contacts
+namespace clsPersonPresentaionLayer
 {
     public partial class frmMain : Form
     {

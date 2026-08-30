@@ -48,24 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="frmAddEditContact.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="frmAddEditContact.Designer.cs">
-      <DependentUpon>frmAddEditContact.cs</DependentUpon>
-    </None>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <None Include="frmListContacts.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="frmListContacts.Designer.cs">
-      <DependentUpon>frmListContacts.cs</DependentUpon>
-    </None>
     <Compile Include="frmPeople.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,9 +148,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contacts\Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\ChatGPT Image Aug 28, 2026, 07_55_30 PM.png" />
   </ItemGroup>

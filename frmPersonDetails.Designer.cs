@@ -1,6 +1,8 @@
-﻿namespace Persons
+﻿using System.Windows.Forms;
+
+namespace clsPersonPresentaionLayer
 {
-    partial class frmPersonDetails
+    partial class frmPersonDetails : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -169,15 +171,15 @@
             this.lblname.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblname.Location = new System.Drawing.Point(203, 202);
             this.lblname.Name = "lblname";
-            this.lblname.Size = new System.Drawing.Size(73, 36);
+            this.lblname.Size = new System.Drawing.Size(32, 36);
             this.lblname.TabIndex = 19;
-            this.lblname.Text = "First";
+            this.lblname.Text = "_";
             // 
             // lblEditPerson
             // 
             this.lblEditPerson.AutoSize = true;
             this.lblEditPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditPerson.Location = new System.Drawing.Point(865, 234);
+            this.lblEditPerson.Location = new System.Drawing.Point(715, 485);
             this.lblEditPerson.Name = "lblEditPerson";
             this.lblEditPerson.Size = new System.Drawing.Size(112, 25);
             this.lblEditPerson.TabIndex = 27;
@@ -188,7 +190,7 @@
             // 
             this.pictureBox1.Image = global::Contacts.Properties.Resources.male;
             this.pictureBox1.InitialImage = global::Contacts.Properties.Resources.male;
-            this.pictureBox1.Location = new System.Drawing.Point(827, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(677, 270);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 200);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -202,9 +204,9 @@
             this.lblnationalnumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblnationalnumber.Location = new System.Drawing.Point(203, 238);
             this.lblnationalnumber.Name = "lblnationalnumber";
-            this.lblnationalnumber.Size = new System.Drawing.Size(73, 36);
+            this.lblnationalnumber.Size = new System.Drawing.Size(32, 36);
             this.lblnationalnumber.TabIndex = 31;
-            this.lblnationalnumber.Text = "First";
+            this.lblnationalnumber.Text = "_";
             // 
             // lblemail
             // 
@@ -213,9 +215,9 @@
             this.lblemail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblemail.Location = new System.Drawing.Point(203, 310);
             this.lblemail.Name = "lblemail";
-            this.lblemail.Size = new System.Drawing.Size(73, 36);
+            this.lblemail.Size = new System.Drawing.Size(32, 36);
             this.lblemail.TabIndex = 32;
-            this.lblemail.Text = "First";
+            this.lblemail.Text = "_";
             // 
             // lblcountry
             // 
@@ -224,9 +226,9 @@
             this.lblcountry.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblcountry.Location = new System.Drawing.Point(203, 418);
             this.lblcountry.Name = "lblcountry";
-            this.lblcountry.Size = new System.Drawing.Size(73, 36);
+            this.lblcountry.Size = new System.Drawing.Size(32, 36);
             this.lblcountry.TabIndex = 33;
-            this.lblcountry.Text = "First";
+            this.lblcountry.Text = "_";
             // 
             // lblphone
             // 
@@ -235,9 +237,9 @@
             this.lblphone.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblphone.Location = new System.Drawing.Point(203, 454);
             this.lblphone.Name = "lblphone";
-            this.lblphone.Size = new System.Drawing.Size(73, 36);
+            this.lblphone.Size = new System.Drawing.Size(32, 36);
             this.lblphone.TabIndex = 34;
-            this.lblphone.Text = "First";
+            this.lblphone.Text = "_";
             // 
             // lbldate
             // 
@@ -246,9 +248,9 @@
             this.lbldate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lbldate.Location = new System.Drawing.Point(203, 346);
             this.lbldate.Name = "lbldate";
-            this.lbldate.Size = new System.Drawing.Size(73, 36);
+            this.lbldate.Size = new System.Drawing.Size(32, 36);
             this.lbldate.TabIndex = 35;
-            this.lbldate.Text = "First";
+            this.lbldate.Text = "_";
             // 
             // lblgender
             // 
@@ -257,9 +259,9 @@
             this.lblgender.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblgender.Location = new System.Drawing.Point(203, 274);
             this.lblgender.Name = "lblgender";
-            this.lblgender.Size = new System.Drawing.Size(73, 36);
+            this.lblgender.Size = new System.Drawing.Size(32, 36);
             this.lblgender.TabIndex = 36;
-            this.lblgender.Text = "First";
+            this.lblgender.Text = "_";
             // 
             // lbladdress
             // 
@@ -268,15 +270,15 @@
             this.lbladdress.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lbladdress.Location = new System.Drawing.Point(203, 382);
             this.lbladdress.Name = "lbladdress";
-            this.lbladdress.Size = new System.Drawing.Size(73, 36);
+            this.lbladdress.Size = new System.Drawing.Size(32, 36);
             this.lbladdress.TabIndex = 37;
-            this.lbladdress.Text = "First";
+            this.lbladdress.Text = "_";
             // 
             // frmPersonDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 601);
+            this.ClientSize = new System.Drawing.Size(896, 538);
             this.Controls.Add(this.lbladdress);
             this.Controls.Add(this.lblgender);
             this.Controls.Add(this.lbldate);

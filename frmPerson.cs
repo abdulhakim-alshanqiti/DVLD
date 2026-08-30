@@ -4,9 +4,10 @@ using Contacts.Properties;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static clsPersonBusinessLayer.clsPerson;
 using static clsPersonDataAccessLayer.clsPersonDataAccess;
 
-namespace Persons
+namespace clsPersonPresentaionLayer
 {
     public partial class frmPerson : Form
     {
@@ -28,6 +29,7 @@ namespace Persons
             else
                 _Mode = enMode.Update;
         }
+
 
         private void _FillCountriesInComoboBox()
         {
@@ -55,7 +57,7 @@ namespace Persons
                 return;
             }
 
-            _Person = clsPerson.Find(_PersonID);
+            _Person = Find(_PersonID);
 
             if (_Person == null)
             {
@@ -76,7 +78,9 @@ namespace Persons
             txtAddress.Text = _Person.Address;
             txtNationalNo.Text = _Person.NationalNo;
             dtpDateOfBirth.Value = _Person.DateOfBirth;
-            if (_Person.Gender == clsPersonDataAccessLayer.clsPersonDataAccess.enGender.Male)
+
+
+            if (_Person.Gender == enGender.Male)
             {
                 radioMale.Checked = true;
             }
@@ -114,10 +118,12 @@ namespace Persons
             _LoadData();
         }
 
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             int NationalityCountryID = clsCountry.Find(cbCountry.Text).ID;
 
+            _Person.NationalNo = txtNationalNo.Text;
             _Person.FirstName = txtFirstName.Text;
             _Person.SecondName = txtSecondName.Text;
             _Person.ThirdName = txtThirdName.Text;
@@ -127,26 +133,112 @@ namespace Persons
             _Person.Address = txtAddress.Text;
             _Person.DateOfBirth = dtpDateOfBirth.Value;
             _Person.NationalityCountryID = NationalityCountryID;
-            _Person.NationalNo = txtNationalNo.Text;
+
             _Person.Gender = (radioMale.Checked) ? enGender.Male : enGender.Female;
 
+            //Validate_Person();
+
+
+            if (string.IsNullOrWhiteSpace(_Person.NationalNo))
+            {
+                errorProvider1.SetError(txtNationalNo, "National Number Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_Person.FirstName))
+            {
+                errorProvider1.SetError(txtFirstName, "First Name Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_Person.SecondName))
+            {
+                errorProvider1.SetError(txtSecondName, "Second Name Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(_Person.ThirdName))
+            {
+                errorProvider1.SetError(txtThirdName, "Third Name Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_Person.LastName))
+            {
+                errorProvider1.SetError(txtLastName, "Last Name Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_Person.Email))
+            {
+                errorProvider1.SetError(txtEmail, "Email Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_Person.Phone))
+            {
+                errorProvider1.SetError(txtPhone, "Phone Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_Person.Address))
+            {
+                errorProvider1.SetError(txtAddress, "Address Isn't Valid");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+
+            if (_Person.NationalityCountryID == -1)
+            {
+                errorProvider1.SetError(cbCountry, "You Haven't Selected a Contry");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+
+
+            if (_Person.DateOfBirth > (DateTime.Now.AddYears(-18)))
+            {
+                errorProvider1.SetError(dtpDateOfBirth, "Make Sure the Date Of Birth Is Above 18");
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                return;
+            }
+
+
+
+            if (openFileDialog1.FileName != "openFileDialog1")
+            {
+                pictureBox1.Load(openFileDialog1.FileName);
+                _Person.ImagePath = openFileDialog1.FileName;
+            }
 
 
             if (_Person.Save())
             {
                 MessageBox.Show("Data Saved Successfully.");
+                if (_Mode == enMode.AddNew)
+                {
+                    _Mode = enMode.Update;
+                    lblMode.Text = "Edit Person ID = " + _Person.ID;
+                    lblPersonID.Text = _Person.ID.ToString();
+
+                }
 
             }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.");
 
 
-            //this.Close();
-            _Mode = enMode.Update;
-            lblMode.Text = "Edit Person ID = " + _Person.ID;
-            lblPersonID.Text = _Person.ID.ToString();
 
-            //delegate DialogResult.OK;
 
 
         }
@@ -219,5 +311,30 @@ namespace Persons
 
             }
         }
+
+        private void Validation(Control Control, KeyPressEventArgs e, string Type)
+        {
+            string Validation_Message = Validate_Person(e.KeyChar, Type);
+
+            if (Validation_Message != null)
+
+            {
+                errorProvider1.SetError(Control, Validation_Message);
+                e.Handled = true;
+            }
+            else errorProvider1.SetError(Control, null);
+        }
+        private void NamesValidation(object sender, KeyPressEventArgs e) =>
+            Validation((Control)sender, e, "First Name");
+
+
+
+        private void NationalNoValidation(object sender, KeyPressEventArgs e) =>
+            Validation((Control)sender, e, "National No");
+
+        private void PhoneValidation(object sender, KeyPressEventArgs e)
+            => Validation((Control)sender, e, "Phone");
+        private void EmailValidation(object sender, KeyPressEventArgs e)
+    => Validation((Control)sender, e, "Email");
     }
 }

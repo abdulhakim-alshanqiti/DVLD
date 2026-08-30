@@ -4,7 +4,7 @@ using Contacts.Properties;
 using System;
 using System.Windows.Forms;
 
-namespace Persons
+namespace clsPersonPresentaionLayer
 {
     public partial class frmPersonDetails : Form
     {
@@ -62,28 +62,22 @@ namespace Persons
 
 
 
-
-
-        private void llOpenFileDialog_LinkClicked(object sender, EventArgs e)
-        {
-            //openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
-            //openFileDialog1.FilterIndex = 1;
-            //openFileDialog1.RestoreDirectory = true;
-
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-
-            //    string selectedFilePath = openFileDialog1.FileName;
-
-            //    pictureBox1.Load(selectedFilePath);
-            //    _Person.ImagePath = selectedFilePath;
-
-            //}
-        }
-
         private void lblEditPerson_LinkClicked(object sender, EventArgs e)
         {
-            if (new frmPerson(_PersonID).ShowDialog() == DialogResult.OK) this.Close();
+
+
+
+            Form f = new frmPerson(_PersonID);
+
+
+            f.FormClosed += (_sender, _e) =>
+            {
+
+                this.Close();
+
+            };
+
+            f.Show();
         }
     }
 }

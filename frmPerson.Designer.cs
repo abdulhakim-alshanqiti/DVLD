@@ -1,4 +1,4 @@
-﻿namespace Persons
+﻿namespace clsPersonPresentaionLayer
 {
     partial class frmPerson
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblMode = new System.Windows.Forms.Label();
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,8 +62,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMode
@@ -189,6 +192,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(174, 26);
             this.txtFirstName.TabIndex = 12;
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
             // 
             // txtNationalNo
             // 
@@ -196,6 +200,7 @@
             this.txtNationalNo.Name = "txtNationalNo";
             this.txtNationalNo.Size = new System.Drawing.Size(178, 26);
             this.txtNationalNo.TabIndex = 13;
+            this.txtNationalNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NationalNoValidation);
             // 
             // txtEmail
             // 
@@ -203,6 +208,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(178, 26);
             this.txtEmail.TabIndex = 15;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailValidation);
             // 
             // txtAddress
             // 
@@ -218,6 +224,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(229, 26);
             this.txtPhone.TabIndex = 17;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneValidation);
             // 
             // dtpDateOfBirth
             // 
@@ -255,6 +262,7 @@
             this.txtSecondName.Name = "txtSecondName";
             this.txtSecondName.Size = new System.Drawing.Size(174, 26);
             this.txtSecondName.TabIndex = 20;
+            this.txtSecondName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
             // 
             // label13
             // 
@@ -273,6 +281,7 @@
             this.txtThirdName.Name = "txtThirdName";
             this.txtThirdName.Size = new System.Drawing.Size(174, 26);
             this.txtThirdName.TabIndex = 22;
+            this.txtThirdName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
             // 
             // label14
             // 
@@ -291,6 +300,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(174, 26);
             this.txtLastName.TabIndex = 24;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
             // 
             // label15
             // 
@@ -375,6 +385,10 @@
             this.label4.Text = "Remove Image";
             this.label4.Click += new System.EventHandler(this.llRemoveImage_LinkClicked);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -416,6 +430,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,5 +471,6 @@
         private System.Windows.Forms.RadioButton radioMale;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

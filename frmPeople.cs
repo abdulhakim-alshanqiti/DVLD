@@ -1,4 +1,5 @@
-﻿using Persons;
+﻿
+using clsPersonBusinessLayer;
 using System.Data;
 using System.Windows.Forms;
 using static clsPersonBusinessLayer.clsPerson;
@@ -10,6 +11,8 @@ namespace clsPersonPresentaionLayer
         {
             InitializeComponent();
         }
+
+
 
         private void frmPeople_Load(object sender, System.EventArgs e)
         {
@@ -27,17 +30,40 @@ namespace clsPersonPresentaionLayer
             int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out Id);
 
 
-            if (new frmPerson(Id).ShowDialog() == DialogResult.OK) RefreshDataGrid();
+
+
+            Form f = new frmPerson(Id);
+
+
+            f.FormClosed += (_sender, _e) =>
+            {
+
+                RefreshDataGrid();
+
+
+            };
+
+            f.Show();
 
 
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void addButton_Click(object sender, System.EventArgs e)
         {
 
-            if (new frmPerson(-1).ShowDialog() == DialogResult.OK) RefreshDataGrid();
+
+            Form f = new frmPerson(-1);
 
 
+            f.FormClosed += (_sender, _e) =>
+            {
+
+                RefreshDataGrid();
+
+
+            };
+
+            f.Show();
 
 
 
@@ -52,6 +78,7 @@ namespace clsPersonPresentaionLayer
             if (textBox1.Text.Trim() == "")
             {
                 dataGridView1.DataSource = table;
+                label1.Text = "Records : " + table.Rows.Count;
                 return;
             }
 
@@ -107,7 +134,7 @@ namespace clsPersonPresentaionLayer
 
 
             }
-
+            label1.Text = "Records : " + view.Count;
 
             dataGridView1.DataSource = view;
         }
@@ -128,47 +155,16 @@ namespace clsPersonPresentaionLayer
             else
                 textBox1.Visible = true;
         }
-
-
         private void FilterKeyPressed(object sender, KeyPressEventArgs e)
         {
+            string Validation_Message = Validate_Person(e.KeyChar, cboxFilterBy.SelectedItem.ToString());
 
-
-            char keyPressed = e.KeyChar;
-
-            switch (cboxFilterBy.SelectedItem.ToString())
+            if (Validation_Message != null)
             {
-
-
-                case "Person ID":
-
-                    if (!char.IsDigit(keyPressed) && !char.IsControl(keyPressed))
-                    {
-                        errorProvider1.SetError(textBox1, "Person ID Can't Have Letters !!!");
-                        e.Handled = true;
-                    }
-                    else errorProvider1.SetError(textBox1, null); break;
-
-                case "Nationality":
-                    if (!char.IsDigit(keyPressed) && !char.IsControl(keyPressed))
-                    {
-                        errorProvider1.SetError(textBox1, "Nationality Can't Have Letters !!!");
-                        e.Handled = true;
-                    }
-                    else errorProvider1.SetError(textBox1, null); break;
-
-
-                case "Gender":
-                    if (!char.IsDigit(keyPressed) && !char.IsControl(keyPressed))
-                    {
-                        errorProvider1.SetError(textBox1, "Gender Can't Have Letters !!!");
-                        e.Handled = true;
-                    }
-                    else errorProvider1.SetError(textBox1, null); break;
-
-                default: errorProvider1.SetError(textBox1, null); break;
-
+                errorProvider1.SetError(textBox1, Validation_Message);
+                e.Handled = true;
             }
+            else errorProvider1.SetError(textBox1, null);
 
 
         }
@@ -179,7 +175,59 @@ namespace clsPersonPresentaionLayer
             int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out Id);
 
 
-            if (new frmPersonDetails(Id).ShowDialog() == DialogResult.OK) RefreshDataGrid();
+
+            Form f = new frmPersonDetails(Id);
+
+
+            f.FormClosed += (_sender, _e) =>
+            {
+
+                RefreshDataGrid();
+
+            };
+
+            f.Show();
+
+        }
+
+        private void deletePersonToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            int Id = -1;
+
+            int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out Id);
+
+            clsPerson person = clsPerson.Find(Id);
+
+            if (MessageBox.Show($"Are You Sure You Want to Delete Person with this Info : " +
+                  $"\nID: {person.ID}" +
+                  $"\nNationalNo: {person.NationalNo}" +
+                  $"\nName: {person.FirstName}  {person.SecondName} {person.ThirdName} {person.LastName} ", "Are You Sure", MessageBoxButtons.OKCancel)
+                == DialogResult.OK
+                  )
+            {
+                if (person.Delete(person.ID))
+                {
+                    MessageBox.Show("Person Deleted Succesfully ");
+
+
+                    RefreshDataGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Error While Deleting Person");
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
 
         }
     }

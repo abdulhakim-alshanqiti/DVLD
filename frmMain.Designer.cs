@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Contacts
+namespace clsPersonPresentaionLayer
 {
     partial class frmMain
     {
