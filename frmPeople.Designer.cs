@@ -56,7 +56,7 @@
             this.addPersonToolStripMenuItem,
             this.deletePersonToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 165);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 132);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -75,8 +75,9 @@
             // addPersonToolStripMenuItem
             // 
             this.addPersonToolStripMenuItem.Name = "addPersonToolStripMenuItem";
-            this.addPersonToolStripMenuItem.Size = new System.Drawing.Size(186, 32);
+            this.addPersonToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
             this.addPersonToolStripMenuItem.Text = "Add Person";
+            this.addPersonToolStripMenuItem.Click += new System.EventHandler(this.addPersonToolStripMenuItem_Click);
             // 
             // label1
             // 

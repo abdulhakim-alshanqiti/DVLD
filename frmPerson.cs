@@ -1,11 +1,10 @@
 ﻿using clsCountryBusinessLayer;
-using clsPersonBusinessLayer;
 using Contacts.Properties;
+using DVLD_Business;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using static clsPersonBusinessLayer.clsPerson;
-using static clsPersonDataAccessLayer.clsPersonDataAccess;
+using static DVLD_Business.clsPerson;
 
 namespace clsPersonPresentaionLayer
 {
@@ -80,7 +79,7 @@ namespace clsPersonPresentaionLayer
             dtpDateOfBirth.Value = _Person.DateOfBirth;
 
 
-            if (_Person.Gender == enGender.Male)
+            if (_Person.Gender == 0)
             {
                 radioMale.Checked = true;
             }
@@ -99,7 +98,7 @@ namespace clsPersonPresentaionLayer
 
 
 
-                pictureBox1.Image = _Person.Gender == clsPersonDataAccessLayer.clsPersonDataAccess.enGender.Male ? Resources.male : Resources.female;
+                pictureBox1.Image = _Person.Gender == 0 ? Resources.male : Resources.female;
 
 
 
@@ -109,7 +108,7 @@ namespace clsPersonPresentaionLayer
             //pictureBox1.Visible = (_Person.ImagePath != "");
 
             //this will select the country in the combobox.
-            cbCountry.SelectedIndex = cbCountry.FindString(clsCountry.Find(_Person.NationalityCountryID).Name);
+            cbCountry.SelectedIndex = cbCountry.FindString(clsCountry.Find(_Person.NationalityCountryID).CountryName);
 
         }
 
@@ -134,7 +133,14 @@ namespace clsPersonPresentaionLayer
             _Person.DateOfBirth = dtpDateOfBirth.Value;
             _Person.NationalityCountryID = NationalityCountryID;
 
-            _Person.Gender = (radioMale.Checked) ? enGender.Male : enGender.Female;
+            if (radioMale.Checked)
+
+                _Person.Gender = 0;
+
+            else
+
+                _Person.Gender = 1;
+
 
             //Validate_Person();
 
@@ -161,12 +167,6 @@ namespace clsPersonPresentaionLayer
             }
 
 
-            if (string.IsNullOrWhiteSpace(_Person.ThirdName))
-            {
-                errorProvider1.SetError(txtThirdName, "Third Name Isn't Valid");
-                MessageBox.Show("Error: Data Is not Saved Successfully.");
-                return;
-            }
 
             if (string.IsNullOrWhiteSpace(_Person.LastName))
             {
@@ -175,12 +175,6 @@ namespace clsPersonPresentaionLayer
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(_Person.Email))
-            {
-                errorProvider1.SetError(txtEmail, "Email Isn't Valid");
-                MessageBox.Show("Error: Data Is not Saved Successfully.");
-                return;
-            }
 
             if (string.IsNullOrWhiteSpace(_Person.Phone))
             {
@@ -228,8 +222,8 @@ namespace clsPersonPresentaionLayer
                 if (_Mode == enMode.AddNew)
                 {
                     _Mode = enMode.Update;
-                    lblMode.Text = "Edit Person ID = " + _Person.ID;
-                    lblPersonID.Text = _Person.ID.ToString();
+                    lblMode.Text = "Edit Person ID = " + _Person.PersonID;
+                    lblPersonID.Text = _Person.PersonID.ToString();
 
                 }
 

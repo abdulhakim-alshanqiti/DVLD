@@ -1,8 +1,8 @@
 ﻿
-using clsPersonBusinessLayer;
+using DVLD_Business;
 using System.Data;
 using System.Windows.Forms;
-using static clsPersonBusinessLayer.clsPerson;
+using static DVLD_Business.clsPerson;
 namespace clsPersonPresentaionLayer
 {
     public partial class frmPeople : Form
@@ -199,13 +199,13 @@ namespace clsPersonPresentaionLayer
             clsPerson person = clsPerson.Find(Id);
 
             if (MessageBox.Show($"Are You Sure You Want to Delete Person with this Info : " +
-                  $"\nID: {person.ID}" +
+                  $"\nID: {person.PersonID}" +
                   $"\nNationalNo: {person.NationalNo}" +
                   $"\nName: {person.FirstName}  {person.SecondName} {person.ThirdName} {person.LastName} ", "Are You Sure", MessageBoxButtons.OKCancel)
                 == DialogResult.OK
                   )
             {
-                if (person.Delete(person.ID))
+                if (person.Delete(person.PersonID))
                 {
                     MessageBox.Show("Person Deleted Succesfully ");
 
@@ -220,15 +220,23 @@ namespace clsPersonPresentaionLayer
 
             }
 
+        }
+
+        private void addPersonToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+            Form f = new frmPerson(-1);
 
 
+            f.FormClosed += (_sender, _e) =>
+            {
+
+                RefreshDataGrid();
 
 
+            };
 
-
-
-
-
+            f.Show();
         }
     }
 }

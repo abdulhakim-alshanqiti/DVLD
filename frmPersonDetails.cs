@@ -1,5 +1,5 @@
 ﻿using clsCountryBusinessLayer;
-using clsPersonBusinessLayer;
+using DVLD_Business;
 using Contacts.Properties;
 using System;
 using System.Windows.Forms;
@@ -51,7 +51,7 @@ namespace clsPersonPresentaionLayer
             else pictureBox1.Image = _Person.Gender == 0 ? Resources.male : Resources.female;
 
 
-            lblcountry.Text = clsCountry.Find(_Person.NationalityCountryID).Name;
+            lblcountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
 
         }
 
