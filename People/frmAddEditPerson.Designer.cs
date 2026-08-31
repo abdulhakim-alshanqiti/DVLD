@@ -1,6 +1,6 @@
-﻿namespace clsPersonPresentaionLayer
+﻿namespace DVLD.People
 {
-    partial class frmPerson
+    partial class frmAddUpdatePerson
     {
         /// <summary>
         /// Required designer variable.
@@ -57,14 +57,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioMale = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rbFemale = new System.Windows.Forms.RadioButton();
+            this.rbMale = new System.Windows.Forms.RadioButton();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.llRemoveImage = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,7 +192,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(174, 26);
             this.txtFirstName.TabIndex = 12;
-            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // txtNationalNo
             // 
@@ -200,7 +200,7 @@
             this.txtNationalNo.Name = "txtNationalNo";
             this.txtNationalNo.Size = new System.Drawing.Size(178, 26);
             this.txtNationalNo.TabIndex = 13;
-            this.txtNationalNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NationalNoValidation);
+            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNoValidating);
             // 
             // txtEmail
             // 
@@ -208,7 +208,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(178, 26);
             this.txtEmail.TabIndex = 15;
-            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailValidation);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmailValidating);
             // 
             // txtAddress
             // 
@@ -224,7 +224,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(229, 26);
             this.txtPhone.TabIndex = 17;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneValidation);
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // dtpDateOfBirth
             // 
@@ -262,7 +262,7 @@
             this.txtSecondName.Name = "txtSecondName";
             this.txtSecondName.Size = new System.Drawing.Size(174, 26);
             this.txtSecondName.TabIndex = 20;
-            this.txtSecondName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
+            this.txtSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // label13
             // 
@@ -281,7 +281,6 @@
             this.txtThirdName.Name = "txtThirdName";
             this.txtThirdName.Size = new System.Drawing.Size(174, 26);
             this.txtThirdName.TabIndex = 22;
-            this.txtThirdName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
             // 
             // label14
             // 
@@ -300,18 +299,18 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(174, 26);
             this.txtLastName.TabIndex = 24;
-            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NamesValidation);
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(690, 379);
+            this.label15.Location = new System.Drawing.Point(727, 379);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(101, 25);
             this.label15.TabIndex = 27;
             this.label15.Text = "Set Image";
-            this.label15.Click += new System.EventHandler(this.llOpenFileDialog_LinkClicked);
+            this.label15.Click += new System.EventHandler(this.llSetImage_LinkClicked);
             // 
             // openFileDialog1
             // 
@@ -319,8 +318,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioMale);
+            this.groupBox1.Controls.Add(this.rbFemale);
+            this.groupBox1.Controls.Add(this.rbMale);
             this.groupBox1.Location = new System.Drawing.Point(128, 179);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(178, 45);
@@ -329,38 +328,38 @@
             // 
             // radioButton2
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(77, 22);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(87, 24);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Female";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.Click += new System.EventHandler(this.radioGenderClicked);
+            this.rbFemale.AutoSize = true;
+            this.rbFemale.Location = new System.Drawing.Point(77, 22);
+            this.rbFemale.Name = "radioButton2";
+            this.rbFemale.Size = new System.Drawing.Size(87, 24);
+            this.rbFemale.TabIndex = 1;
+            this.rbFemale.Text = "Female";
+            this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.Click += new System.EventHandler(this.radioGenderClicked);
             // 
             // radioMale
             // 
-            this.radioMale.AutoSize = true;
-            this.radioMale.Location = new System.Drawing.Point(3, 22);
-            this.radioMale.Name = "radioMale";
-            this.radioMale.Size = new System.Drawing.Size(68, 24);
-            this.radioMale.TabIndex = 0;
-            this.radioMale.TabStop = true;
-            this.radioMale.Text = "Male";
-            this.radioMale.UseVisualStyleBackColor = true;
-            this.radioMale.Click += new System.EventHandler(this.radioGenderClicked);
+            this.rbMale.AutoSize = true;
+            this.rbMale.Checked = true;
+            this.rbMale.Location = new System.Drawing.Point(3, 22);
+            this.rbMale.Name = "radioMale";
+            this.rbMale.Size = new System.Drawing.Size(68, 24);
+            this.rbMale.TabIndex = 0;
+            this.rbMale.TabStop = true;
+            this.rbMale.Text = "Male";
+            this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.Click += new System.EventHandler(this.radioGenderClicked);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Contacts.Properties.Resources.male;
-            this.pictureBox1.InitialImage = global::Contacts.Properties.Resources.male;
-            this.pictureBox1.Location = new System.Drawing.Point(684, 158);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
+            this.pbPersonImage.Image = global::Contacts.Properties.Resources.male;
+            this.pbPersonImage.InitialImage = global::Contacts.Properties.Resources.male;
+            this.pbPersonImage.Location = new System.Drawing.Point(684, 158);
+            this.pbPersonImage.Name = "pictureBox1";
+            this.pbPersonImage.Size = new System.Drawing.Size(200, 200);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPersonImage.TabIndex = 26;
+            this.pbPersonImage.TabStop = false;
             // 
             // button1
             // 
@@ -374,31 +373,31 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label4
+            // lblRemoveImage
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(797, 379);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(143, 25);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Remove Image";
-            this.label4.Click += new System.EventHandler(this.llRemoveImage_LinkClicked);
+            this.llRemoveImage.AutoSize = true;
+            this.llRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llRemoveImage.Location = new System.Drawing.Point(714, 421);
+            this.llRemoveImage.Name = "lblRemoveImage";
+            this.llRemoveImage.Size = new System.Drawing.Size(143, 25);
+            this.llRemoveImage.TabIndex = 30;
+            this.llRemoveImage.Text = "Remove Image";
+            this.llRemoveImage.Click += new System.EventHandler(this.llRemoveImage_LinkClicked);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmPerson
+            // frmAddUpdatePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 522);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.llRemoveImage);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.label13);
@@ -424,12 +423,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbCountry);
             this.Controls.Add(this.lblMode);
-            this.Name = "frmPerson";
-            this.Text = "Person";
-            this.Load += new System.EventHandler(this.frmPerson_Load);
+            this.Name = "frmAddUpdatePerson";
+            this.Text = "Add / Edit Person";
+            this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -463,14 +462,14 @@
         private System.Windows.Forms.TextBox txtThirdName;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioMale;
+        private System.Windows.Forms.RadioButton rbFemale;
+        private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label llRemoveImage;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

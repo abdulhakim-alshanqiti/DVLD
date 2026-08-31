@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace clsPersonPresentaionLayer
+namespace DVLD.People
 {
     public partial class frmMain : Form
     {

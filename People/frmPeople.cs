@@ -3,7 +3,7 @@ using DVLD_Business;
 using System.Data;
 using System.Windows.Forms;
 using static DVLD_Business.clsPerson;
-namespace clsPersonPresentaionLayer
+namespace DVLD.People
 {
     public partial class frmPeople : Form
     {
@@ -32,7 +32,7 @@ namespace clsPersonPresentaionLayer
 
 
 
-            Form f = new frmPerson(Id);
+            Form f = new frmAddUpdatePerson(Id);
 
 
             f.FormClosed += (_sender, _e) =>
@@ -52,7 +52,7 @@ namespace clsPersonPresentaionLayer
         {
 
 
-            Form f = new frmPerson(-1);
+            Form f = new frmAddUpdatePerson(-1);
 
 
             f.FormClosed += (_sender, _e) =>
@@ -201,7 +201,7 @@ namespace clsPersonPresentaionLayer
             if (MessageBox.Show($"Are You Sure You Want to Delete Person with this Info : " +
                   $"\nID: {person.PersonID}" +
                   $"\nNationalNo: {person.NationalNo}" +
-                  $"\nName: {person.FirstName}  {person.SecondName} {person.ThirdName} {person.LastName} ", "Are You Sure", MessageBoxButtons.OKCancel)
+                  $"\nName: {person.FullName()}", "Are You Sure", MessageBoxButtons.OKCancel)
                 == DialogResult.OK
                   )
             {
@@ -225,7 +225,7 @@ namespace clsPersonPresentaionLayer
         private void addPersonToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
 
-            Form f = new frmPerson(-1);
+            Form f = new frmAddUpdatePerson(-1);
 
 
             f.FormClosed += (_sender, _e) =>

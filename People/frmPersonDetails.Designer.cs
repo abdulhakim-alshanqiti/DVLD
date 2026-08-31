@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace clsPersonPresentaionLayer
+namespace DVLD.People
 {
     partial class frmPersonDetails : Form
     {

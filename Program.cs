@@ -1,5 +1,5 @@
 ﻿
-using clsPersonPresentaionLayer;
+using DVLD.People;
 using System;
 using System.Windows.Forms;
 

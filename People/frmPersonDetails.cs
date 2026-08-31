@@ -1,10 +1,9 @@
-﻿using clsCountryBusinessLayer;
+﻿using Contacts.Properties;
 using DVLD_Business;
-using Contacts.Properties;
 using System;
 using System.Windows.Forms;
 
-namespace clsPersonPresentaionLayer
+namespace DVLD.People
 {
     public partial class frmPersonDetails : Form
     {
@@ -39,7 +38,7 @@ namespace clsPersonPresentaionLayer
 
             lblMode.Text = "Edit Person ID = " + _PersonID;
             lblPersonID.Text = _PersonID.ToString();
-            lblname.Text = $"{_Person.FirstName} {_Person.SecondName} {_Person.ThirdName} {_Person.LastName}";
+            lblname.Text = $"{_Person.FullName()}";
             lblemail.Text = _Person.Email;
             lblphone.Text = _Person.Phone;
             lbladdress.Text = _Person.Address;
@@ -51,7 +50,7 @@ namespace clsPersonPresentaionLayer
             else pictureBox1.Image = _Person.Gender == 0 ? Resources.male : Resources.female;
 
 
-            lblcountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+            lblcountry.Text = _Person.CountryInfo.CountryName;
 
         }
 
@@ -67,7 +66,7 @@ namespace clsPersonPresentaionLayer
 
 
 
-            Form f = new frmPerson(_PersonID);
+            Form f = new frmAddUpdatePerson(_PersonID);
 
 
             f.FormClosed += (_sender, _e) =>

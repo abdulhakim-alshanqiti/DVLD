@@ -1,4 +1,4 @@
-﻿namespace clsPersonPresentaionLayer
+﻿namespace DVLD.People
 {
     partial class frmPeople
     {

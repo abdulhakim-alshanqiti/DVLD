@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace clsPersonPresentaionLayer
+namespace DVLD.People
 {
     partial class frmMain
     {
