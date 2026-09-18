@@ -2,7 +2,7 @@
 
 namespace DVLD.People
 {
-    partial class frmPersonDetails : Form
+    partial class frmShowPersonInfo : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -188,8 +188,8 @@ namespace DVLD.People
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Contacts.Properties.Resources.male;
-            this.pictureBox1.InitialImage = global::Contacts.Properties.Resources.male;
+            this.pictureBox1.Image = global::People.Properties.Resources.male;
+            this.pictureBox1.InitialImage = global::People.Properties.Resources.male;
             this.pictureBox1.Location = new System.Drawing.Point(677, 270);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 200);

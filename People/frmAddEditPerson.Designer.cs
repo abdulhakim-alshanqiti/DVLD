@@ -352,8 +352,8 @@
             // 
             // pictureBox1
             // 
-            this.pbPersonImage.Image = global::Contacts.Properties.Resources.male;
-            this.pbPersonImage.InitialImage = global::Contacts.Properties.Resources.male;
+            this.pbPersonImage.Image = global::People.Properties.Resources.male;
+            this.pbPersonImage.InitialImage = global::People.Properties.Resources.male;
             this.pbPersonImage.Location = new System.Drawing.Point(684, 158);
             this.pbPersonImage.Name = "pictureBox1";
             this.pbPersonImage.Size = new System.Drawing.Size(200, 200);

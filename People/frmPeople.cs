@@ -176,7 +176,7 @@ namespace DVLD.People
 
 
 
-            Form f = new frmPersonDetails(Id);
+            Form f = new frmShowPersonInfo(Id);
 
 
             f.FormClosed += (_sender, _e) =>

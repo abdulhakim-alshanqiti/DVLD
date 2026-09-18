@@ -59,7 +59,7 @@ namespace DVLD.People
             // applicationToolStripMenuItem
             // 
             this.applicationToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.applicationToolStripMenuItem.Image = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_11_52_AM;
+            this.applicationToolStripMenuItem.Image = global::People.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_11_52_AM;
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(287, 94);
             this.applicationToolStripMenuItem.Text = "Applications";
@@ -67,7 +67,7 @@ namespace DVLD.People
             // 
             // peopleToolStripMenuItem
             // 
-            this.peopleToolStripMenuItem.Image = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_08_05_AM;
+            this.peopleToolStripMenuItem.Image = global::People.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_08_05_AM;
             this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
             this.peopleToolStripMenuItem.Size = new System.Drawing.Size(215, 94);
             this.peopleToolStripMenuItem.Text = "People";
@@ -75,7 +75,7 @@ namespace DVLD.People
             // 
             // toolStripMenuItem6
             // 
-            this.toolStripMenuItem6.Image = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_05_03_M;
+            this.toolStripMenuItem6.Image = global::People.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_05_03_M;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(215, 94);
             this.toolStripMenuItem6.Text = "Drivers";
@@ -83,21 +83,21 @@ namespace DVLD.People
             // 
             // toolStripMenuItem8
             // 
-            this.toolStripMenuItem8.Image = global::Contacts.Properties.Resources._91668856_test;
+            this.toolStripMenuItem8.Image = global::People.Properties.Resources._91668856_test;
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(197, 94);
             this.toolStripMenuItem8.Text = "Users";
             // 
             // toolStripMenuItem7
             // 
-            this.toolStripMenuItem7.Image = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_09_40_AM;
+            this.toolStripMenuItem7.Image = global::People.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_09_40_AM;
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(348, 94);
             this.toolStripMenuItem7.Text = "Account Settings";
             // 
             // frmMain
             // 
-            this.BackgroundImage = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_28__2026__07_55_30_PM;
+            this.BackgroundImage = global::People.Properties.Resources.ChatGPT_Image_Aug_28__2026__07_55_30_PM;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1271, 556);
             this.Controls.Add(this.menuStrip2);

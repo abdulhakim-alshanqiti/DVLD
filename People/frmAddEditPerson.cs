@@ -1,7 +1,7 @@
 ﻿using clsCountryBusinessLayer;
-using Contacts.Properties;
 using DVLD.Classes;
 using DVLD_Business;
+using People.Properties;
 using System;
 using System.ComponentModel;
 using System.Data;

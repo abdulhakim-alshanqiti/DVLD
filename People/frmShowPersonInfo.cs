@@ -1,18 +1,18 @@
-﻿using Contacts.Properties;
-using DVLD_Business;
+﻿using DVLD_Business;
+using People.Properties;
 using System;
 using System.Windows.Forms;
 
 namespace DVLD.People
 {
-    public partial class frmPersonDetails : Form
+    public partial class frmShowPersonInfo : Form
     {
 
 
         int _PersonID;
         clsPerson _Person;
 
-        public frmPersonDetails(int PersonID)
+        public frmShowPersonInfo(int PersonID)
         {
             InitializeComponent();
 

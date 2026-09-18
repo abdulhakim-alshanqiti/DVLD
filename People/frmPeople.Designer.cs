@@ -143,7 +143,7 @@
             // addButton
             // 
             this.addButton.BackColor = System.Drawing.Color.AliceBlue;
-            this.addButton.BackgroundImage = global::Contacts.Properties.Resources.ChatGPT_Image_Aug_13__2026__10_12_07_AM;
+            this.addButton.BackgroundImage = global::People.Properties.Resources.ChatGPT_Image_Aug_13__2026__10_12_07_AM;
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.addButton.FlatAppearance.BorderSize = 5;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
