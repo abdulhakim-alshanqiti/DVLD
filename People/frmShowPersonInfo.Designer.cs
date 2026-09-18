@@ -60,9 +60,9 @@ namespace DVLD.People
             this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMode.Location = new System.Drawing.Point(348, 18);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(208, 36);
+            this.lblMode.Size = new System.Drawing.Size(168, 36);
             this.lblMode.TabIndex = 0;
-            this.lblMode.Text = "Person Details";
+            this.lblMode.Text = "Person Info";
             // 
             // label2
             // 
@@ -179,7 +179,7 @@ namespace DVLD.People
             // 
             this.lblEditPerson.AutoSize = true;
             this.lblEditPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditPerson.Location = new System.Drawing.Point(715, 485);
+            this.lblEditPerson.Location = new System.Drawing.Point(697, 378);
             this.lblEditPerson.Name = "lblEditPerson";
             this.lblEditPerson.Size = new System.Drawing.Size(112, 25);
             this.lblEditPerson.TabIndex = 27;
@@ -188,9 +188,8 @@ namespace DVLD.People
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::People.Properties.Resources.male;
-            this.pictureBox1.InitialImage = global::People.Properties.Resources.male;
-            this.pictureBox1.Location = new System.Drawing.Point(677, 270);
+            this.pictureBox1.Image = global::DVLD.Properties.Resources.male;
+            this.pictureBox1.Location = new System.Drawing.Point(657, 162);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 200);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -274,7 +273,7 @@ namespace DVLD.People
             this.lbladdress.TabIndex = 37;
             this.lbladdress.Text = "_";
             // 
-            // frmPersonDetails
+            // frmShowPersonInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -300,7 +299,7 @@ namespace DVLD.People
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblMode);
-            this.Name = "frmPersonDetails";
+            this.Name = "frmShowPersonInfo";
             this.Text = "Person";
             this.Load += new System.EventHandler(this.frmPersonDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

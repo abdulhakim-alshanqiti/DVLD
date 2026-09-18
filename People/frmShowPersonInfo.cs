@@ -1,5 +1,5 @@
-﻿using DVLD_Business;
-using People.Properties;
+﻿using DVLD.Properties;
+using DVLD_Business;
 using System;
 using System.Windows.Forms;
 

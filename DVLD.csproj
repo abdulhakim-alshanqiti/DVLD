@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7C0308CB-085A-4B96-A7D3-40BB528325E6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Contacts</RootNamespace>
-    <AssemblyName>Contacts</AssemblyName>
+    <RootNamespace>DVLD</RootNamespace>
+    <AssemblyName>DVLD</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -90,6 +90,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -108,7 +109,7 @@
       <Project>{e533f207-e07a-4d21-90bd-95a635e42ccc}</Project>
       <Name>DVLDBusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ContactsDataAccessLayer\DVLDDataAccessLayer.csproj">
+    <ProjectReference Include="..\DVLDDataAccessLayer\DVLDDataAccessLayer.csproj">
       <Project>{DCCC4184-857C-4F65-88B3-8E1CCEA8B9E7}</Project>
       <Name>DVLDDataAccessLayer</Name>
     </ProjectReference>
@@ -157,6 +158,8 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

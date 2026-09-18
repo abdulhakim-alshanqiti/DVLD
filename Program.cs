@@ -3,7 +3,7 @@ using DVLD.People;
 using System;
 using System.Windows.Forms;
 
-namespace Contacts
+namespace DVLD
 {
     internal static class Program
     {

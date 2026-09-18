@@ -1,4 +1,4 @@
-﻿namespace Contacts
+﻿namespace DVLD
 {
     partial class MDI
     {
