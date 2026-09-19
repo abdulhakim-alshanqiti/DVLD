@@ -117,7 +117,7 @@ namespace DVLD.People
             txtNationalNo.Text = _Person.NationalNo;
             dtpDateOfBirth.Value = _Person.DateOfBirth;
 
-            if (_Person.Gendor == 0)
+            if (_Person.Gender == 0)
                 rbMale.Checked = true;
             else
                 rbFemale.Checked = true;
