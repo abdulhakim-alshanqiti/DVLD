@@ -6,7 +6,7 @@ namespace DVLD.People
 {
     public partial class frmMain : Form
     {
-        Form PeopleForm = new frmPeople();
+        Form PeopleForm = new frmListPeople();
         public frmMain()
         {
             InitializeComponent();
