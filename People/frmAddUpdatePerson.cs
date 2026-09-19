@@ -1,4 +1,5 @@
-﻿using DVLD.Properties;
+﻿using DVLD.Classes;
+using DVLD.Properties;
 using DVLD_Business;
 using System;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace DVLD.People
         public event DataBackEventHandler DataBack;
 
         public enum enMode { AddNew = 0, Update = 1 };
-        public enum enGendor { Male = 0, Female = 1 };
+        public enum enGender { Male = 0, Female = 1 };
 
         private enMode _Mode;
         private int _PersonID = -1;
@@ -180,7 +181,7 @@ namespace DVLD.People
                     //then we copy the new image to the image folder after we rename it
                     string SourceImageFile = pbPersonImage.ImageLocation.ToString();
 
-                    if (clsUtil.CopyImageToProjectImagesFolder(ref SourceImageFile))
+                    if (clsUtils.CopyImageToProjectImagesFolder(ref SourceImageFile))
                     {
                         pbPersonImage.ImageLocation = SourceImageFile;
                         return true;
@@ -223,9 +224,9 @@ namespace DVLD.People
             _Person.DateOfBirth = dtpDateOfBirth.Value;
 
             if (rbMale.Checked)
-                _Person.Gendor = (short)enGendor.Male;
+                _Person.Gender = (byte)enGender.Male;
             else
-                _Person.Gendor = (short)enGendor.Female;
+                _Person.Gender = (byte)enGender.Female;
 
             _Person.NationalityCountryID = NationalityCountryID;
 
@@ -278,9 +279,9 @@ namespace DVLD.People
 
 
             if (rbMale.Checked)
-                pbPersonImage.Image = Resources.Male_512;
+                pbPersonImage.Image = Resources.male;
             else
-                pbPersonImage.Image = Resources.Female_512;
+                pbPersonImage.Image = Resources.female;
 
             llRemoveImage.Visible = false;
         }
@@ -289,14 +290,14 @@ namespace DVLD.People
         {
             //change the defualt image to female incase there is no image set.
             if (pbPersonImage.ImageLocation == null)
-                pbPersonImage.Image = Resources.Female_512;
+                pbPersonImage.Image = Resources.female;
         }
 
         private void rbMale_Click(object sender, EventArgs e)
         {
             //change the defualt image to male incase there is no image set.
             if (pbPersonImage.ImageLocation == null)
-                pbPersonImage.Image = Resources.Male_512;
+                pbPersonImage.Image = Resources.male;
         }
 
         private void ValidateEmptyTextBox(object sender, CancelEventArgs e)
@@ -324,7 +325,7 @@ namespace DVLD.People
                 return;
 
             //validate email format
-            if (!clsValidatoin.ValidateEmail(txtEmail.Text))
+            if (!clsValidation.ValidateEmail(txtEmail.Text))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtEmail, "Invalid Email Address Format!");
@@ -350,7 +351,7 @@ namespace DVLD.People
             }
 
             //Make sure the national number is not used by another person
-            if (txtNationalNo.Text.Trim() != _Person.NationalNo && clsPerson.isPersonExist(txtNationalNo.Text.Trim()))
+            if (txtNationalNo.Text.Trim() != _Person.NationalNo && clsPerson.DoesPersonExist(txtNationalNo.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtNationalNo, "National Number is used for another person!");
