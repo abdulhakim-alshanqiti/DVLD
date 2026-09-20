@@ -1,5 +1,4 @@
 ﻿using DVLD.People;
-using DVLD_Business;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -56,17 +55,14 @@ namespace DVLD.Controls
         }
 
 
-        private int _PersonID = -1;
+
 
         public int PersonID
         {
             get { return ctrlPersonCard1.PersonID; }
         }
 
-        public clsPerson SelectedPersonInfo
-        {
-            get { return ctrlPersonCard1.SelectedPersonInfo; }
-        }
+
 
         public void LoadPersonInfo(int PersonID)
         {
