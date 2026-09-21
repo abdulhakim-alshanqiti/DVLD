@@ -320,11 +320,11 @@ namespace DVLD.People
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
-            //no need to validate the email incase it's empty.
+            // no need to validate the email incase it's empty.
             if (txtEmail.Text.Trim() == "")
                 return;
 
-            //validate email format
+            // validate email format
             if (!clsValidation.ValidateEmail(txtEmail.Text))
             {
                 e.Cancel = true;

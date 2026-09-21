@@ -11,18 +11,21 @@ namespace DVLD.People
         private static DataTable _dtAllPeople = clsPerson.GetAllPeople();
 
         //only select the columns that you want to show in the grid
-        private DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
-                                                         "FirstName", "SecondName", "ThirdName", "LastName",
-                                                         "GenderCaption", "DateOfBirth", "CountryName",
-                                                         "Phone", "Email");
+        private DataTable _dtPeople = _dtAllPeople.DefaultView.
+            ToTable(false, "PersonID", "NationalNo",
+            "FirstName", "SecondName", "ThirdName", "LastName",
+            "GenderCaption", "DateOfBirth", "CountryName",
+            "Phone", "Email");
 
         private void _RefreshPeopleList()
         {
             _dtAllPeople = clsPerson.GetAllPeople();
-            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
-                                                       "FirstName", "SecondName", "ThirdName", "LastName",
-                                                       "GenderCaption", "DateOfBirth", "CountryName",
-                                                       "Phone", "Email");
+            _dtPeople = _dtAllPeople.DefaultView.
+
+            ToTable(false, "PersonID", "NationalNo",
+            "FirstName", "SecondName", "ThirdName", "LastName",
+            "GenderCaption", "DateOfBirth", "CountryName",
+            "Phone", "Email");
 
             dgvPeople.DataSource = _dtPeople;
             lblRecordsCount.Text = dgvPeople.Rows.Count.ToString();

@@ -95,7 +95,6 @@ namespace DVLD.Controls
             lblPersonID.Text = "[????]";
             lblNationalNo.Text = "[????]";
             lblFullName.Text = "[????]";
-            //pbGendor.Image = Resources.male;
             lblGendor.Text = "[????]";
             lblEmail.Text = "[????]";
             lblPhone.Text = "[????]";

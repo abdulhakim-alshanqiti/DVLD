@@ -117,11 +117,11 @@
     <None Include="Resources\Mohammed AbuHadhoud.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactBusinessLayer\DVLDBusinessLayer.csproj">
+    <ProjectReference Include="..\DVLD_Business\DVLDBusinessLayer.csproj">
       <Project>{e533f207-e07a-4d21-90bd-95a635e42ccc}</Project>
       <Name>DVLDBusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DVLDDataAccessLayer\DVLDDataAccessLayer.csproj">
+    <ProjectReference Include="..\DVLD_DataAccess\DVLDDataAccessLayer.csproj">
       <Project>{DCCC4184-857C-4F65-88B3-8E1CCEA8B9E7}</Project>
       <Name>DVLDDataAccessLayer</Name>
     </ProjectReference>
@@ -160,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\CtrlPersonCard.resx">
       <DependentUpon>CtrlPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmAddUpdatePerson.resx">
+      <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmFindPerson.resx">
       <DependentUpon>frmFindPerson.cs</DependentUpon>
