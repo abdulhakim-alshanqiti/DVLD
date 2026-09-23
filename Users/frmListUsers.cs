@@ -192,9 +192,9 @@ namespace DVLD.Users
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            //Form frm1 = new frmAddUpdateUser();
-            //frm1.ShowDialog();
-            //_RefreshUsersList();
+            Form frm1 = new frmAddUpdateUser();
+            frm1.ShowDialog();
+            _RefreshUsersList();
 
         }
 

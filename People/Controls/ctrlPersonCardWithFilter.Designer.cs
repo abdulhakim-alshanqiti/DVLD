@@ -53,11 +53,12 @@
             this.gbFilters.Controls.Add(this.txtFilterValue);
             this.gbFilters.Controls.Add(this.label1);
             this.gbFilters.Location = new System.Drawing.Point(10, 3);
+            this.gbFilters.Margin = new System.Windows.Forms.Padding(10);
             this.gbFilters.Name = "gbFilters";
-            this.gbFilters.Size = new System.Drawing.Size(819, 118);
+            this.gbFilters.Size = new System.Drawing.Size(819, 128);
             this.gbFilters.TabIndex = 16;
             this.gbFilters.TabStop = false;
-            this.gbFilters.Text = "Filter";
+            this.gbFilters.Text = "Filter People";
             // 
             // btnAddNewPerson
             // 
@@ -92,7 +93,7 @@
             this.cbFilterBy.Items.AddRange(new object[] {
             "National No.",
             "Person ID"});
-            this.cbFilterBy.Location = new System.Drawing.Point(125, 26);
+            this.cbFilterBy.Location = new System.Drawing.Point(125, 34);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(434, 37);
             this.cbFilterBy.TabIndex = 16;
@@ -100,7 +101,7 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilterValue.Location = new System.Drawing.Point(21, 71);
+            this.txtFilterValue.Location = new System.Drawing.Point(21, 79);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(538, 35);
@@ -111,7 +112,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 28);
+            this.label1.Location = new System.Drawing.Point(16, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 29);
             this.label1.TabIndex = 19;

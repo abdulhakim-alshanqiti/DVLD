@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DVLD.People
+namespace DVLD.Users
 {
-    public partial class frmFindUser : Form
+    public partial class frmAddUpdateUser : Form
     {
 
         // Declare a delegate
@@ -13,7 +13,7 @@ namespace DVLD.People
         public event DataBackEventHandler DataBack;
 
 
-        public frmFindUser()
+        public frmAddUpdateUser()
         {
             InitializeComponent();
         }
