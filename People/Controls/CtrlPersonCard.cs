@@ -1,5 +1,6 @@
 ﻿using DVLD.People;
 using DVLD.Properties;
+using DVLD_Buisness;
 using DVLD_Business;
 using System.IO;
 using System.Windows.Forms;
@@ -75,7 +76,7 @@ namespace DVLD.Controls
             _PersonID = _Person.PersonID;
             lblPersonID.Text = _Person.PersonID.ToString();
             lblNationalNo.Text = _Person.NationalNo;
-            lblFullName.Text = _Person.FullName();
+            lblFullName.Text = _Person.FullName;
             lblGendor.Text = _Person.Gender == 0 ? "Male" : "Female";
             lblEmail.Text = _Person.Email;
             lblPhone.Text = _Person.Phone;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD.Users;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,6 +8,7 @@ namespace DVLD.People
     public partial class frmMain : Form
     {
         Form PeopleForm = new frmListPeople();
+        Form UsersForm = new frmListUsers();
         public frmMain()
         {
             InitializeComponent();
@@ -43,6 +45,16 @@ namespace DVLD.People
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            UsersForm.MdiParent = this;
+
+            if (UsersForm.Visible)
+                UsersForm.Hide();
+            else
+                UsersForm.Show();
         }
     }
 }
