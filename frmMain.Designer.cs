@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DVLD.People
+namespace DVLD
 {
     partial class frmMain
     {
