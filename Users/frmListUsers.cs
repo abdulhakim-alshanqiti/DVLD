@@ -141,11 +141,12 @@ namespace DVLD.Users
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            //Form frm = new frmAddUpdateUser((int)dgvUsers.CurrentRow.Cells[0].Value);
-            //frm.ShowDialog();
+            Form frm = new frmAddUpdateUser((int)dgvUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
 
-            //_RefreshUsersList();
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            _RefreshUsersList();
+
+
         }
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
