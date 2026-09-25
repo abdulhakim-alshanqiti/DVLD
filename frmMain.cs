@@ -1,17 +1,44 @@
-﻿using DVLD.People;
+﻿using DVLD.Login;
+using DVLD.People;
 using DVLD.Users;
+using DVLD_Buisness;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
 namespace DVLD
 {
     public partial class frmMain : Form
     {
-        Form PeopleForm = new frmListPeople();
-        Form UsersForm = new frmListUsers();
+
+
+
+        frmListPeople PeopleForm = new frmListPeople();
+        frmListUsers UsersForm = new frmListUsers();
+        frmLogin LoginForm = new frmLogin();
         public frmMain()
         {
+
+
+
+
+
+
+            LoginForm.DataBack += DataBackEvent;
+            LoginForm.ShowDialog();
+            //LoginForm.Focus
+
+
+
+
+
+
+        }
+
+
+        private void DataBackEvent(object sender, clsUser User)
+        {
+            LoginForm.Hide();
+
             InitializeComponent();
         }
 

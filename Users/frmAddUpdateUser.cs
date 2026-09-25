@@ -96,7 +96,7 @@ namespace DVLD.Users
             }
 
             //Make sure the Username is not used by another person
-            if (clsUser.DoesUserExistByUsername(txtUserName.Text.Trim()))
+            if (_Mode == enMode.AddNew && clsUser.DoesUserExistByUsername(txtUserName.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtUserName, "Username is used by another person!");
