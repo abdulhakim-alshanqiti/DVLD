@@ -19,10 +19,6 @@ namespace DVLD
         {
 
 
-
-
-
-
             LoginForm.DataBack += DataBackEvent;
             LoginForm.ShowDialog();
             //LoginForm.Focus
