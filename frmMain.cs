@@ -90,5 +90,14 @@ namespace DVLD
             DataBack.Invoke(sender);
 
         }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowUserInfo UserInfoCard = new frmShowUserInfo();
+
+            UserInfoCard.LoadPersonInfo(clsGlobal.CurrentUser.PersonID);
+
+            UserInfoCard.ShowDialog();
+        }
     }
 }

@@ -114,7 +114,5 @@ namespace DVLD.Controls
             //refresh
             LoadPersonInfo(_PersonID);
         }
-
-
     }
 }

@@ -132,10 +132,11 @@ namespace DVLD.Users
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int UserID = (int)dgvUsers.CurrentRow.Cells[0].Value;
-            //Form frm = new frmShowUserInfo(UserID);
-            //frm.ShowDialog();
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            int UserID = (int)dgvUsers.CurrentRow.Cells[0].Value;
+            frmShowUserInfo frm = new frmShowUserInfo();
+
+            frm.LoadUserInfo(UserID);
+            frm.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
