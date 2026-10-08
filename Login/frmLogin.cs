@@ -1,16 +1,19 @@
-﻿using DVLD_Buisness;
+﻿using DVLD.Global;
+using DVLD_Buisness;
 using System.Windows.Forms;
+
 namespace DVLD.Login
 {
     public partial class frmLogin : Form
     {
+        frmMain Mainform;
 
-        public delegate void DataBackEventHandler(object sender, clsUser User);
 
         // Declare an event using the delegate
-        public event DataBackEventHandler DataBack;
+
 
         private clsUser _SignedInUser;
+
 
         public clsUser SignedInUser
         {
@@ -69,25 +72,35 @@ namespace DVLD.Login
                 clsUser tempUser;
 
                 if ((tempUser = clsUser.FindUserByUsername(txtUserName.Text)) == null)
-                {
                     MessageBox.Show("Username Is incorrect !");
-                }
+
                 else
-                {
                     if (tempUser.Password != txtPassword.Text)
                         MessageBox.Show("Password Is incorrect !");
                     else
                     {
-                        _SignedInUser = tempUser;
-                        MessageBox.Show("You Have Signed In COrrectly !");
-                        DataBack?.Invoke(this, tempUser);
+                        clsGlobal.CurrentUser = tempUser;
+
+                        MessageBox.Show("You Have Signed In Correctly !");
+
+
+                        Mainform = new frmMain();
+
+                        Mainform.DataBack += DataBackEvent;
+                        Mainform.ShowDialog();
+
                     }
-                }
-            }
-            else
-            {
 
             }
+
+        }
+
+        private void DataBackEvent(object sender)
+        {
+            Mainform.Dispose();
+            txtPassword.Text = null;
+            txtUserName.Text = null;
+
         }
     }
 }

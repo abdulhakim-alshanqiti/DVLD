@@ -36,6 +36,9 @@ namespace DVLD
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +74,7 @@ namespace DVLD
             this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
             this.peopleToolStripMenuItem.Size = new System.Drawing.Size(215, 94);
             this.peopleToolStripMenuItem.Text = "People";
-            this.peopleToolStripMenuItem.Click += new System.EventHandler(this.peopleToolStripMenuItem_Click_1);
+            this.peopleToolStripMenuItem.Click += new System.EventHandler(this.peopleToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -87,14 +90,37 @@ namespace DVLD
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(197, 94);
             this.toolStripMenuItem8.Text = "Users";
-            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
+            this.toolStripMenuItem7.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentUserInfoToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
+            this.signOutToolStripMenuItem});
             this.toolStripMenuItem7.Image = global::DVLD.Properties.Resources.ChatGPT_Image_Aug_11__2026__01_09_40_AM;
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(348, 94);
             this.toolStripMenuItem7.Text = "Account Settings";
+            // 
+            // currentUserInfoToolStripMenuItem
+            // 
+            this.currentUserInfoToolStripMenuItem.Name = "currentUserInfoToolStripMenuItem";
+            this.currentUserInfoToolStripMenuItem.Size = new System.Drawing.Size(361, 50);
+            this.currentUserInfoToolStripMenuItem.Text = "Current User Info";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(361, 50);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            // 
+            // signOutToolStripMenuItem
+            // 
+            this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
+            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(361, 50);
+            this.signOutToolStripMenuItem.Text = "Sign Out";
+            this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -128,5 +154,8 @@ namespace DVLD
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem currentUserInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem signOutToolStripMenuItem;
     }
 }

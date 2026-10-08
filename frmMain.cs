@@ -1,7 +1,6 @@
-﻿using DVLD.Login;
+﻿using DVLD.Global;
 using DVLD.People;
 using DVLD.Users;
-using DVLD_Buisness;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,31 +11,24 @@ namespace DVLD
 
 
 
-        frmListPeople PeopleForm = new frmListPeople();
-        frmListUsers UsersForm = new frmListUsers();
-        frmLogin LoginForm = new frmLogin();
+        frmListPeople PeopleForm;
+        frmListUsers UsersForm;
+        public delegate void DataBackEventHandler(object sender);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler DataBack;
+
         public frmMain()
         {
 
 
-            LoginForm.DataBack += DataBackEvent;
-            LoginForm.ShowDialog();
-            //LoginForm.Focus
-
-
-
-
-
-
-        }
-
-
-        private void DataBackEvent(object sender, clsUser User)
-        {
-            LoginForm.Hide();
-
             InitializeComponent();
+
+
         }
+
+
+
 
 
         private void frmMain_Paint(object sender, PaintEventArgs e)
@@ -51,8 +43,14 @@ namespace DVLD
             }
         }
 
-        private void peopleToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            if (PeopleForm == null || PeopleForm.IsDisposed == true)
+            {
+                PeopleForm = new frmListPeople();
+            }
+
             PeopleForm.MdiParent = this;
 
             if (PeopleForm.Visible)
@@ -71,14 +69,26 @@ namespace DVLD
 
         }
 
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (UsersForm == null || UsersForm.IsDisposed == true)
+            {
+                UsersForm = new frmListUsers();
+            }
             UsersForm.MdiParent = this;
 
             if (UsersForm.Visible)
                 UsersForm.Hide();
             else
                 UsersForm.Show();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+
+            DataBack.Invoke(sender);
+
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using DVLD.People;
+﻿using DVLD.Login;
 using System;
 using System.Windows.Forms;
 
@@ -7,6 +6,8 @@ namespace DVLD
 {
     internal static class Program
     {
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -15,7 +16,14 @@ namespace DVLD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(
+                new frmLogin()
+
+
+                );
         }
+
+
+
     }
 }
