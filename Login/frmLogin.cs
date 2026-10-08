@@ -12,14 +12,7 @@ namespace DVLD.Login
         // Declare an event using the delegate
 
 
-        private clsUser _SignedInUser;
 
-
-        public clsUser SignedInUser
-        {
-            get { return _SignedInUser; }
-
-        }
         public frmLogin()
         {
             InitializeComponent();
