@@ -1,4 +1,5 @@
-﻿using DVLD_Buisness;
+﻿using DVLD.User;
+using DVLD_Buisness;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -38,28 +39,27 @@ namespace DVLD.Users
             dgvUsers.DataSource = _dtUsers;
             cbFilterBy.SelectedIndex = 0;
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
-            if (dgvUsers.Rows.Count > 0)
-            {
-
-                dgvUsers.Columns[0].HeaderText = "User ID";
-                dgvUsers.Columns[0].Width = 110;
-
-                dgvUsers.Columns[1].HeaderText = "Person ID";
-                dgvUsers.Columns[1].Width = 120;
 
 
-                dgvUsers.Columns[2].HeaderText = "Username";
-                dgvUsers.Columns[2].Width = 120;
+            dgvUsers.Columns[0].HeaderText = "User ID";
+            dgvUsers.Columns[0].Width = 110;
 
-                dgvUsers.Columns[3].HeaderText = "Password";
-                dgvUsers.Columns[3].Width = 140;
-
-
-                dgvUsers.Columns[4].HeaderText = "IsActive";
-                dgvUsers.Columns[4].Width = 120;
+            dgvUsers.Columns[1].HeaderText = "Person ID";
+            dgvUsers.Columns[1].Width = 120;
 
 
-            }
+            dgvUsers.Columns[2].HeaderText = "Username";
+            dgvUsers.Columns[2].Width = 120;
+
+            dgvUsers.Columns[3].HeaderText = "Password";
+            dgvUsers.Columns[3].Width = 140;
+
+
+            dgvUsers.Columns[4].HeaderText = "IsActive";
+            dgvUsers.Columns[4].Width = 120;
+
+
+
 
         }
 
@@ -85,10 +85,6 @@ namespace DVLD.Users
                 case "Password":
                     FilterColumn = "Password";
                     break;
-
-
-
-
 
                 default:
                     FilterColumn = "None";
@@ -120,9 +116,7 @@ namespace DVLD.Users
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            txtFilterValue.Visible = (cbFilterBy.Text != "None");
-
-            if (txtFilterValue.Visible)
+            if ((txtFilterValue.Visible = (cbFilterBy.Text != "None")))
             {
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
@@ -191,7 +185,13 @@ namespace DVLD.Users
             _RefreshUsersList();
 
         }
+        private void changeUserPasswordtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword ChangePasswordForm = new frmChangePassword((int)dgvUsers.CurrentRow.Cells[0].Value);
+            ChangePasswordForm.ShowDialog();
+            _RefreshUsersList();
 
+        }
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             Form frm1 = new frmAddUpdateUser();
@@ -218,5 +218,7 @@ namespace DVLD.Users
             if (cbFilterBy.Text == "User ID" || cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+
     }
 }

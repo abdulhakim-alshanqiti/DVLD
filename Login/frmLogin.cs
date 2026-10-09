@@ -62,14 +62,11 @@ namespace DVLD.Login
         {
             if (this.ValidateChildren())
             {
-                clsUser tempUser;
+                clsUser tempUser = clsUser.FindUserByUsername(txtUserName.Text);
 
-                if ((tempUser = clsUser.FindUserByUsername(txtUserName.Text)) == null)
-                    MessageBox.Show("Username Is incorrect !");
-                else if (!tempUser.IsActive)
-                    MessageBox.Show("User Account isn't active !");
-                else if (tempUser.Password != txtPassword.Text)
-                    MessageBox.Show("Password Is incorrect !");
+                if (tempUser == null) MessageBox.Show("Username Is incorrect !");
+                else if (!tempUser.IsActive) MessageBox.Show("User Account isn't active !");
+                else if (tempUser.Password != txtPassword.Text) MessageBox.Show("Password Is incorrect !");
                 else
                 {
                     clsGlobal.CurrentUser = tempUser;
@@ -80,6 +77,7 @@ namespace DVLD.Login
                     Mainform = new frmMain();
 
                     Mainform.DataBack += DataBackEvent;
+                    Mainform.FormClosed += DataBackEvent;
                     Mainform.ShowDialog();
 
                 }
@@ -87,13 +85,19 @@ namespace DVLD.Login
             }
 
         }
+        private void BtnClose_Click(object sender, System.EventArgs e) => this.Close();
 
-        private void DataBackEvent(object sender)
+        private void _closeMainForm()
         {
             Mainform.Dispose();
             txtPassword.Text = null;
             txtUserName.Text = null;
-
         }
+        private void DataBackEvent(object sender, FormClosedEventArgs e) => _closeMainForm();
+
+
+        private void DataBackEvent(object sender) => _closeMainForm();
+
+
     }
 }

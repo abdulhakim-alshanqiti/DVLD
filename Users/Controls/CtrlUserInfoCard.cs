@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 namespace DVLD.Controls
 {
-    public partial class CtrlUserInfoCard : UserControl
+    public partial class ctrlUserCard : UserControl
     {
 
 
-        public CtrlUserInfoCard()
+        public ctrlUserCard()
         {
             InitializeComponent();
 

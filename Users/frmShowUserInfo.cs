@@ -11,12 +11,12 @@ namespace DVLD.Users
 
         internal void LoadPersonInfo(int personID)
         {
-            ctrlUserInfoCard1.LoadPersonInfo(personID);
+            ctrlUserCard1.LoadPersonInfo(personID);
         }
 
         internal void LoadUserInfo(int userID)
         {
-            ctrlUserInfoCard1.LoadUserInfo(userID);
+            ctrlUserCard1.LoadUserInfo(userID);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DVLD.Global;
 using DVLD.People;
+using DVLD.User;
 using DVLD.Users;
 using System;
 using System.Drawing;
@@ -102,8 +103,7 @@ namespace DVLD
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword ChangePasswordForm = new frmChangePassword();
-            ChangePasswordForm.LoadUserInfo(clsGlobal.CurrentUser.UserID);
+            frmChangePassword ChangePasswordForm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
             ChangePasswordForm.ShowDialog();
         }
     }

@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlUserInfoCard1 = new DVLD.Controls.CtrlUserInfoCard();
+            this.ctrlUserCard1 = new DVLD.Controls.ctrlUserCard();
             this.SuspendLayout();
             // 
-            // ctrlUserInfoCard1
+            // ctrlUserCard1
             // 
-            this.ctrlUserInfoCard1.AutoSize = true;
-            this.ctrlUserInfoCard1.BackColor = System.Drawing.Color.White;
-            this.ctrlUserInfoCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlUserInfoCard1.Location = new System.Drawing.Point(1, 0);
-            this.ctrlUserInfoCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlUserInfoCard1.Name = "ctrlUserInfoCard1";
-            this.ctrlUserInfoCard1.Size = new System.Drawing.Size(847, 387);
-            this.ctrlUserInfoCard1.TabIndex = 0;
+            this.ctrlUserCard1.AutoSize = true;
+            this.ctrlUserCard1.BackColor = System.Drawing.Color.White;
+            this.ctrlUserCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlUserCard1.Location = new System.Drawing.Point(1, 0);
+            this.ctrlUserCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlUserCard1.Name = "ctrlUserCard1";
+            this.ctrlUserCard1.Size = new System.Drawing.Size(847, 387);
+            this.ctrlUserCard1.TabIndex = 0;
             // 
             // frmShowUserInfo
             // 
@@ -48,7 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(839, 388);
-            this.Controls.Add(this.ctrlUserInfoCard1);
+            this.Controls.Add(this.ctrlUserCard1);
             this.Name = "frmShowUserInfo";
             this.Text = "frmShowUserInfo";
             this.ResumeLayout(false);
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private Controls.CtrlUserInfoCard ctrlUserInfoCard1;
+        private Controls.ctrlUserCard ctrlUserCard1;
     }
 }
