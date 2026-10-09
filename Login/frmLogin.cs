@@ -66,23 +66,23 @@ namespace DVLD.Login
 
                 if ((tempUser = clsUser.FindUserByUsername(txtUserName.Text)) == null)
                     MessageBox.Show("Username Is incorrect !");
-
+                else if (!tempUser.IsActive)
+                    MessageBox.Show("User Account isn't active !");
+                else if (tempUser.Password != txtPassword.Text)
+                    MessageBox.Show("Password Is incorrect !");
                 else
-                    if (tempUser.Password != txtPassword.Text)
-                        MessageBox.Show("Password Is incorrect !");
-                    else
-                    {
-                        clsGlobal.CurrentUser = tempUser;
+                {
+                    clsGlobal.CurrentUser = tempUser;
 
-                        MessageBox.Show("You Have Signed In Correctly !");
+                    MessageBox.Show("You Have Signed In Correctly !");
 
 
-                        Mainform = new frmMain();
+                    Mainform = new frmMain();
 
-                        Mainform.DataBack += DataBackEvent;
-                        Mainform.ShowDialog();
+                    Mainform.DataBack += DataBackEvent;
+                    Mainform.ShowDialog();
 
-                    }
+                }
 
             }
 

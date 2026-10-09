@@ -183,13 +183,13 @@ namespace DVLD.Users
 
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void addUserStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //Form frm = new frmAddUpdateUser();
-            //frm.ShowDialog();
+            Form frm = new frmAddUpdateUser();
+            frm.ShowDialog();
 
-            //_RefreshUsersList();
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            _RefreshUsersList();
+
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)

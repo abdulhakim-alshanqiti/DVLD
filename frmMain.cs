@@ -99,5 +99,12 @@ namespace DVLD
 
             UserInfoCard.ShowDialog();
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword ChangePasswordForm = new frmChangePassword();
+            ChangePasswordForm.LoadUserInfo(clsGlobal.CurrentUser.UserID);
+            ChangePasswordForm.ShowDialog();
+        }
     }
 }

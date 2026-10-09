@@ -7,8 +7,6 @@ namespace DVLD.Users
         public frmShowUserInfo()
         {
             InitializeComponent();
-            // ctrlUserInfoCard1.LoadPersonInfo(clsGlobal.CurrentUser.PersonID);
-
         }
 
         internal void LoadPersonInfo(int personID)
