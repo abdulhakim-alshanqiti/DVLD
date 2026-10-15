@@ -16,8 +16,20 @@ namespace DVLD.Login
         public frmLogin()
         {
             InitializeComponent();
-        }
 
+            _PopulateRemembderMeInfo();
+        }
+        private void _PopulateRemembderMeInfo()
+        {
+
+            string Username = "", Password = "";
+
+            if (chkRememberMe.Checked = clsGlobal.GetStoredCredential(ref Username, ref Password))
+            {
+                txtUserName.Text = Username;
+                txtPassword.Text = Password;
+            }
+        }
         private void txtUserName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
@@ -65,19 +77,39 @@ namespace DVLD.Login
                 clsUser tempUser = clsUser.FindUserByUsername(txtUserName.Text);
 
                 if (tempUser == null) MessageBox.Show("Username Is incorrect !");
-                else if (!tempUser.IsActive) MessageBox.Show("User Account isn't active !");
+                else if (!tempUser.IsActive)
+                {
+                    txtUserName.Focus();
+                    MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else if (tempUser.Password != txtPassword.Text) MessageBox.Show("Password Is incorrect !");
                 else
                 {
+
+
+                    if (chkRememberMe.Checked)
+                    {
+                        //store username and password
+                        clsGlobal.RememberUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+
+                    }
+                    else
+                    {
+                        //store empty username and password
+                        clsGlobal.RememberUsernameAndPassword("", "");
+
+                    }
+
                     clsGlobal.CurrentUser = tempUser;
 
-                    MessageBox.Show("You Have Signed In Correctly !");
+
+                    this.Hide();
+                    Mainform = new frmMain(this)
+                    {
+                        WindowState = FormWindowState.Maximized
+                    };
 
 
-                    Mainform = new frmMain();
-
-                    Mainform.DataBack += DataBackEvent;
-                    Mainform.FormClosed += DataBackEvent;
                     Mainform.ShowDialog();
 
                 }
@@ -90,8 +122,8 @@ namespace DVLD.Login
         private void _closeMainForm()
         {
             Mainform.Dispose();
-            txtPassword.Text = null;
-            txtUserName.Text = null;
+            this.Show();
+            _PopulateRemembderMeInfo();
         }
         private void DataBackEvent(object sender, FormClosedEventArgs e) => _closeMainForm();
 

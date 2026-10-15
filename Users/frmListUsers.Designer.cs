@@ -36,6 +36,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeUserPasswordtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.pbUserImage = new System.Windows.Forms.PictureBox();
-            this.changeUserPasswordtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.cmsUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
@@ -97,26 +97,26 @@
             this.sendEmailToolStripMenuItem,
             this.phoneCallToolStripMenuItem});
             this.cmsUsers.Name = "contextMenuStrip1";
-            this.cmsUsers.Size = new System.Drawing.Size(241, 273);
+            this.cmsUsers.Size = new System.Drawing.Size(225, 240);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.showDetailsToolStripMenuItem.Text = "&Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(237, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(240, 32);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(224, 32);
             this.toolStripMenuItem1.Text = "Add &New User";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.addUserStripMenuItem1_Click);
             // 
@@ -124,28 +124,35 @@
             // 
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.editToolStripMenuItem.Text = "&Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // changeUserPasswordtoolStripMenuItem
+            // 
+            this.changeUserPasswordtoolStripMenuItem.Name = "changeUserPasswordtoolStripMenuItem";
+            this.changeUserPasswordtoolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.changeUserPasswordtoolStripMenuItem.Text = "&Change Password";
+            this.changeUserPasswordtoolStripMenuItem.Click += new System.EventHandler(this.changeUserPasswordtoolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.deleteToolStripMenuItem.Text = "&Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(237, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // sendEmailToolStripMenuItem
             // 
             this.sendEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.sendEmailToolStripMenuItem.Text = "Send E&mail";
             this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
             // 
@@ -153,7 +160,7 @@
             // 
             this.phoneCallToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
             this.phoneCallToolStripMenuItem.Text = "Phone &Call";
             this.phoneCallToolStripMenuItem.Click += new System.EventHandler(this.phoneCallToolStripMenuItem_Click);
             // 
@@ -248,13 +255,6 @@
             this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbUserImage.TabIndex = 86;
             this.pbUserImage.TabStop = false;
-            // 
-            // changeUserPasswordtoolStripMenuItem
-            // 
-            this.changeUserPasswordtoolStripMenuItem.Name = "changeUserPasswordtoolStripMenuItem";
-            this.changeUserPasswordtoolStripMenuItem.Size = new System.Drawing.Size(240, 32);
-            this.changeUserPasswordtoolStripMenuItem.Text = "&Change Password";
-            this.changeUserPasswordtoolStripMenuItem.Click += new System.EventHandler(this.changeUserPasswordtoolStripMenuItem_Click);
             // 
             // frmListUsers
             // 

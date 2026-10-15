@@ -1,26 +1,22 @@
 ﻿using DVLD_Buisness;
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace DVLD.Users
+namespace DVLD.User
 {
     public partial class frmAddUpdateUser : Form
     {
 
-        // Declare a delegate
-        public delegate void DataBackEventHandler(object sender, int PersonID);
-
-        // Declare an event using the delegate
-        public event DataBackEventHandler DataBack;
-
         public enum enMode { AddNew = 0, Update = 1 };
-
         private enMode _Mode;
         private int _UserID = -1;
-        private clsUser _User;
+        clsUser _User;
+
         public frmAddUpdateUser()
         {
             InitializeComponent();
+
             _Mode = enMode.AddNew;
         }
 
@@ -28,208 +24,231 @@ namespace DVLD.Users
         {
             InitializeComponent();
 
-            if ((_User = clsUser.FindUserByUserID(UserID)) != null)
+            _Mode = enMode.Update;
+            _UserID = UserID;
+        }
+
+        private void _ResetDefualtValues()
+        {
+            //this will initialize the reset the defaule values
+
+            if (_Mode == enMode.AddNew)
             {
-                _UserID = _User.UserID;
-                _Mode = enMode.Update;
-                lblUserID.Text = UserID.ToString();
+                lblTitle.Text = "Add New User";
+                this.Text = "Add New User";
+                _User = new clsUser();
+
+                tpLoginInfo.Enabled = false;
+
+                ctrlPersonCardWithFilter1.FilterFocus();
+            }
+            else
+            {
                 lblTitle.Text = "Update User";
-                txtUserName.Text = _User.Username;
-                txtPassword.Text = _User.Password;
-                txtConfirmPassword.Text = _User.Password;
-                chkIsActive.Checked = _User.IsActive;
-                ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
+                this.Text = "Update User";
+
+                tpLoginInfo.Enabled = true;
+                btnSave.Enabled = true;
+
+
             }
-            else
-            {
-                MessageBox.Show("Couldn't Find User !");
-            }
+
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtConfirmPassword.Text = "";
+            chkIsActive.Checked = true;
 
 
         }
 
-
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            // Trigger the event to send data back to the caller form.
-            DataBack?.Invoke(this, _UserID);
-        }
-
-        private void selectedPersonChanged(int PersonID)
-        {
-            if (_Mode == enMode.AddNew && clsUser.DoesUserExistByPersonID(PersonID))
-            {
-                errorProvider1.SetError(nextBtn, "This Person Already is a User");
-                nextBtn.Enabled = false;
-            }
-            if (PersonID == -1)
-            {
-                errorProvider1.SetError(nextBtn, "This Person Doesn't Exist");
-                nextBtn.Enabled = false;
-            }
-            else
-            {
-                errorProvider1.SetError(nextBtn, null);
-                nextBtn.Enabled = true;
-            }
-        }
-
-        private void nextBtn_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPage2;
-        }
-
-        private void txtUserName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void _LoadData()
         {
 
+            _User = clsUser.FindUserByUserID(_UserID);
+            ctrlPersonCardWithFilter1.FilterEnabled = false;
 
-            if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
+            if (_User == null)
             {
-                e.Cancel = true;
-                errorProvider1.SetError(txtUserName, "This field is required!");
+                MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
+
                 return;
             }
-            else
-            {
-                errorProvider1.SetError(txtUserName, null);
-            }
 
-            //Make sure the Username is not used by another person
-            if (_Mode == enMode.AddNew && clsUser.DoesUserExistByUsername(txtUserName.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtUserName, "Username is used by another person!");
-
-            }
-            else
-            {
-                errorProvider1.SetError(txtUserName, null);
-            }
-
+            //the following code will not be executed if the person was not found
+            lblUserID.Text = _User.UserID.ToString();
+            txtUsername.Text = _User.Username;
+            txtPassword.Text = _User.Password;
+            txtConfirmPassword.Text = _User.Password;
+            chkIsActive.Checked = _User.IsActive;
+            ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
 
-        private void txtPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void frmAddUpdateUser_Load(object sender, EventArgs e)
         {
+            _ResetDefualtValues();
 
-
-            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtPassword, "This field is required!");
-                return;
-            }
-            else
-            {
-                errorProvider1.SetError(txtPassword, null);
-            }
-
-
-        }
-        private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtConfirmPassword.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtConfirmPassword, "This field is required!");
-                return;
-            }
-            else
-            {
-                errorProvider1.SetError(txtConfirmPassword, null);
-            }
-
-            if (txtConfirmPassword.Text != txtPassword.Text)
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtConfirmPassword, "passwords don't match!");
-                return;
-            }
-            else
-            {
-                errorProvider1.SetError(txtConfirmPassword, null);
-            }
+            if (_Mode == enMode.Update)
+                _LoadData();
 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+
+            if (!this.ValidateChildren())
             {
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
 
-                if (_Mode == enMode.AddNew)
-                {
-                    int UserID = clsUser.AddUser(ctrlPersonCardWithFilter1.PersonID,
-                        txtUserName.Text.Trim(), txtPassword.Text, chkIsActive.Checked);
+            }
 
-                    if (UserID == -1)
-                    {
-                        MessageBox.Show("Couldn't Create User !");
-                    }
-                    else
-                    {
-
-
-                        MessageBox.Show("Added a new User !");
-                        _UserID = UserID;
-                        _Mode = enMode.Update;
-                        lblUserID.Text = UserID.ToString();
-                        lblTitle.Text = "Update User";
-
-                    }
-
-                }
-                else
-                {
-                    if (clsUser.UpdateUser(_UserID, ctrlPersonCardWithFilter1.PersonID,
-                          txtUserName.Text.Trim(), txtPassword.Text, chkIsActive.Checked))
-                    {
-                        MessageBox.Show("Updated User Succefully !");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to Update User !");
-                    }
-                }
+            _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
+            _User.Username = txtUsername.Text.Trim();
+            _User.Password = txtPassword.Text.Trim();
+            _User.IsActive = chkIsActive.Checked;
 
 
+            if (_User.Save())
+            {
+                lblUserID.Text = _User.UserID.ToString();
+                //change form mode to update.
+                _Mode = enMode.Update;
+                lblTitle.Text = "Update User";
+                this.Text = "Update User";
+
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-            {
-                MessageBox.Show("Make Sure Info Is Correct !");
-            }
-
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
-        private void ChoosePerson(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
         {
-            if (ctrlPersonCardWithFilter1.PersonID == -1)
+            if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
             {
-
                 e.Cancel = true;
-                errorProvider1.SetError(nextBtn, "You Haven't Selected A Person");
+                errorProvider1.SetError(txtConfirmPassword, "Password Confirmation does not match Password!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtConfirmPassword, null);
+            }
+            ;
+
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPassword, "Password cannot be blank");
+            }
+            else
+            {
+                errorProvider1.SetError(txtPassword, null);
+            }
+            ;
+
+        }
+
+        private void txtUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUsername.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtUsername, "Username cannot be blank");
                 return;
             }
             else
             {
-                errorProvider1.SetError(nextBtn, null);
+                errorProvider1.SetError(txtUsername, null);
             }
+            ;
 
 
-            if (_Mode == enMode.AddNew && clsUser.DoesUserExistByPersonID(ctrlPersonCardWithFilter1.PersonID))
+            if (_Mode == enMode.AddNew)
             {
 
-                e.Cancel = true;
-                errorProvider1.SetError(nextBtn, "This Person Already is a User");
-                return;
+                if (clsUser.DoesUserExistByUsername(txtUsername.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtUsername, "username is used by another user");
+                }
+                else
+                {
+                    errorProvider1.SetError(txtUsername, null);
+                }
+                ;
             }
             else
             {
-                errorProvider1.SetError(nextBtn, null);
+                //incase update make sure not to use anothers user name
+                if (_User.Username != txtUsername.Text.Trim())
+                {
+                    if (clsUser.DoesUserExistByUsername(txtUsername.Text.Trim()))
+                    {
+                        e.Cancel = true;
+                        errorProvider1.SetError(txtUsername, "username is used by another user");
+                        return;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtUsername, null);
+                    }
+                    ;
+                }
+            }
+        }
+
+
+        private void btnPersonInfoNext_Click(object sender, EventArgs e)
+        {
+            if (_Mode == enMode.Update)
+            {
+                btnSave.Enabled = true;
+                tpLoginInfo.Enabled = true;
+                tcUserInfo.SelectedTab = tcUserInfo.TabPages["tpLoginInfo"];
+                return;
             }
 
+            //incase of add new mode.
+            if (ctrlPersonCardWithFilter1.PersonID != -1)
+            {
 
+                if (clsUser.DoesUserExistByPersonID(ctrlPersonCardWithFilter1.PersonID))
+                {
+
+                    MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ctrlPersonCardWithFilter1.FilterFocus();
+                }
+
+                else
+                {
+                    btnSave.Enabled = true;
+                    tpLoginInfo.Enabled = true;
+                    tcUserInfo.SelectedTab = tcUserInfo.TabPages["tpLoginInfo"];
+                }
+            }
+
+            else
+
+            {
+                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ctrlPersonCardWithFilter1.FilterFocus();
+
+            }
+
+        }
+
+
+        private void frmAddUpdateUser_Activated(object sender, EventArgs e)
+        {
+            ctrlPersonCardWithFilter1.FilterFocus();
         }
     }
 }

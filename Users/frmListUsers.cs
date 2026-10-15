@@ -127,9 +127,8 @@ namespace DVLD.Users
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int UserID = (int)dgvUsers.CurrentRow.Cells[0].Value;
-            frmShowUserInfo frm = new frmShowUserInfo();
+            frmShowUserInfo frm = new frmShowUserInfo(UserID);
 
-            frm.LoadUserInfo(UserID);
             frm.ShowDialog();
         }
 

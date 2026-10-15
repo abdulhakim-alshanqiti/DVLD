@@ -1,22 +1,22 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace DVLD.Users
 {
     public partial class frmShowUserInfo : Form
     {
-        public frmShowUserInfo()
+        private int _UserID;
+
+        public frmShowUserInfo(int UserID)
         {
             InitializeComponent();
+            _UserID = UserID;
         }
 
-        internal void LoadPersonInfo(int personID)
+        private void frmUserInfo_Load(object sender, EventArgs e)
         {
-            ctrlUserCard1.LoadPersonInfo(personID);
-        }
+            ctrlUserCard1.LoadUserInfo(_UserID);
 
-        internal void LoadUserInfo(int userID)
-        {
-            ctrlUserCard1.LoadUserInfo(userID);
         }
     }
 }

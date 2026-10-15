@@ -1,4 +1,6 @@
-﻿using DVLD.Global;
+﻿using DVLD.Applications;
+using DVLD.Global;
+using DVLD.Login;
 using DVLD.People;
 using DVLD.User;
 using DVLD.Users;
@@ -10,56 +12,40 @@ namespace DVLD
     public partial class frmMain : Form
     {
 
+        frmLogin _frmLogin;
 
-
-        frmListPeople PeopleForm;
-        frmListUsers UsersForm;
         public delegate void DataBackEventHandler(object sender);
 
         // Declare an event using the delegate
         public event DataBackEventHandler DataBack;
 
-        public frmMain()
+        public frmMain(Login.frmLogin frm)
         {
 
 
             InitializeComponent();
 
-
+            _frmLogin = frm;
         }
 
 
 
-
-
-        private void frmMain_Paint(object sender, PaintEventArgs e)
-        {
-            foreach (Control c in this.Controls)
-            {
-                if (c is MdiClient mdiClient)
-                {
-                    mdiClient.BackColor = Color.FromArgb(82, 152, 241);
-                    break;
-                }
-            }
-        }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (PeopleForm == null || PeopleForm.IsDisposed == true)
-            {
-                PeopleForm = new frmListPeople();
-            }
+            frmListPeople PeopleForm = new frmListPeople()
+            ;
 
-            PeopleForm.MdiParent = this;
-
-            if (PeopleForm.Visible)
-                PeopleForm.Hide();
-            else
-                PeopleForm.Show();
+            PeopleForm.ShowDialog();
         }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+            //lblLoggedInUser.Text = "LoggedIn User: " + clsGlobal.CurrentUser.UserName;
+            this.Refresh();
 
+        }
         private void applicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -72,39 +58,45 @@ namespace DVLD
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (UsersForm == null || UsersForm.IsDisposed == true)
-            {
-                UsersForm = new frmListUsers();
-            }
-            UsersForm.MdiParent = this;
 
-            if (UsersForm.Visible)
-                UsersForm.Hide();
-            else
-                UsersForm.Show();
+            frmListUsers UsersForm = new frmListUsers()
+            ;
+
+
+
+            UsersForm.ShowDialog();
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsGlobal.CurrentUser = null;
-
-            DataBack.Invoke(sender);
+            _frmLogin.Show();
+            this.Close();
 
         }
 
+
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowUserInfo UserInfoCard = new frmShowUserInfo();
-
-            UserInfoCard.LoadPersonInfo(clsGlobal.CurrentUser.PersonID);
+            frmShowUserInfo UserInfoCard = new frmShowUserInfo(clsGlobal.CurrentUser.UserID)
+            ;
 
             UserInfoCard.ShowDialog();
+
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword ChangePasswordForm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frmChangePassword ChangePasswordForm = new frmChangePassword(clsGlobal.CurrentUser.UserID)
+            ;
             ChangePasswordForm.ShowDialog();
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListApplicationTypes ApplicationTypesForm = new frmListApplicationTypes()
+            ;
+            ApplicationTypesForm.ShowDialog();
         }
     }
 }
