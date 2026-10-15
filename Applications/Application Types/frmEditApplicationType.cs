@@ -1,22 +1,39 @@
-﻿using System;
+﻿using DVLD.Classes;
+using DVLD_Buisness;
+using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace DVLD.Applications
 {
     public partial class frmEditApplicationType : Form
     {
-        clsApplicationType _ApplicationType;
 
-        public frmEditApplicationType(int value)
+        private int _ApplicationTypeID = -1;
+        private clsApplicationType _ApplicationType;
+
+        public frmEditApplicationType(int ApplicationTypeID)
         {
             InitializeComponent();
+
+            _ApplicationTypeID = ApplicationTypeID;
+
         }
 
-        public frmEditApplicationType(clsApplicationType applicationType)
-        {
-            InitializeComponent();
 
-            _ApplicationType = applicationType;
+        private void frmEditApplicationType_Load(object sender, EventArgs e)
+        {
+            lblApplicationTypeID.Text = _ApplicationTypeID.ToString();
+
+            _ApplicationType = clsApplicationType.Find(_ApplicationTypeID);
+
+            if (_ApplicationType != null)
+            {
+                txtTitle.Text = _ApplicationType.Title;
+                txtFees.Text = _ApplicationType.Fees.ToString();
+
+
+            }
 
         }
 
@@ -26,33 +43,73 @@ namespace DVLD.Applications
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+
             }
 
-            _ApplicationType.Title = txtTitle.Text;
-            _ApplicationType.Fees = decimal.Parse(txtFee.Text);
+            _ApplicationType.Title = txtTitle.Text.Trim();
+            _ApplicationType.Fees = Convert.ToSingle(txtFees.Text.Trim());
+
 
             if (_ApplicationType.Save())
             {
-                MessageBox.Show("Application Type Updated Successfully.",
-                   "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void txtTitle_Validating(object sender, CancelEventArgs e)
+        {
+
+
+            if (string.IsNullOrEmpty(txtTitle.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtTitle, "Title cannot be empty!");
             }
             else
             {
-                MessageBox.Show("An Erro Occured, Application Type did not change.",
-                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider1.SetError(txtTitle, null);
             }
+            ;
+
+
         }
 
-        private void frmUpdateApplicationType_Load(object sender, EventArgs e)
+        private void txtFees_Validating(object sender, CancelEventArgs e)
         {
-            lblID.Text = _ApplicationType.ApplicationTypeID.ToString();
-            txtTitle.Text = _ApplicationType.Title;
-            txtFee.Text = _ApplicationType.Fees.ToString();
+
+
+
+            if (string.IsNullOrEmpty(txtFees.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFees, "Fees cannot be empty!");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(txtFees, null);
+
+            }
+            ;
+
+
+            if (!clsValidation.IsNumber(txtFees.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFees, "Invalid Number.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtFees, null);
+            }
+            ;
 
         }
+
     }
 }

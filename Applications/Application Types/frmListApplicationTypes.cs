@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Buisness;
+using System;
 using System.Windows.Forms;
 
 namespace DVLD.Applications
@@ -33,15 +34,8 @@ namespace DVLD.Applications
         private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            DataGridViewCellCollection CurrentRow = dgvApplicationTypes.CurrentRow.Cells;
 
-            new frmEditApplicationType(
-                  new clsApplicationType(
-                          id: (int)CurrentRow[0].Value,
-                          title: (string)CurrentRow[1].Value,
-                          fees: (float)CurrentRow[2].Value
-                      )
-                )
+            new frmEditApplicationType((int)dgvApplicationTypes.CurrentRow.Cells[0].Value)
                 .ShowDialog();
 
             _RefreshApplicationTypes();
