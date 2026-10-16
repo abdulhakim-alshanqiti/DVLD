@@ -2,6 +2,7 @@
 using DVLD.Global;
 using DVLD.Login;
 using DVLD.People;
+using DVLD.Tests;
 using DVLD.User;
 using DVLD.Users;
 using System;
@@ -97,6 +98,13 @@ namespace DVLD
             frmListApplicationTypes ApplicationTypesForm = new frmListApplicationTypes()
             ;
             ApplicationTypesForm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListTestTypes TestTypesForm = new frmListTestTypes()
+         ;
+            TestTypesForm.ShowDialog();
         }
     }
 }
