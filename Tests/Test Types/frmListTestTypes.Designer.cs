@@ -148,7 +148,7 @@
             this.Controls.Add(this.pbTestsImage);
             this.Name = "frmListTestTypes";
             this.Text = "frmManageTestTypes";
-            this.Load += new System.EventHandler(this.frmManageTestTypes_Load);
+            this.Load += new System.EventHandler(this.frmListTestTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestsImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypes)).EndInit();
             this.cmsTestTypes.ResumeLayout(false);

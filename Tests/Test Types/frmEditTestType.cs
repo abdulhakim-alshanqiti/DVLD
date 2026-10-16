@@ -1,7 +1,10 @@
-﻿using DVLD_Buisness;
+﻿using DVLD.Classes;
+using DVLD_Buisness;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using static DVLD_Buisness.clsTestType;
+
 
 namespace DVLD.Tests
 {
@@ -10,10 +13,10 @@ namespace DVLD.Tests
     public partial class frmEditTestType : Form
     {
 
-        private clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
+        private enTestType _TestTypeID = enTestType.VisionTest;
         private clsTestType _TestType;
 
-        public frmEditTestType(clsTestType.enTestType TestTypeID)
+        public frmEditTestType(enTestType TestTypeID)
         {
             InitializeComponent();
             _TestTypeID = TestTypeID;
@@ -118,7 +121,7 @@ namespace DVLD.Tests
             ;
 
 
-            if (!clsValidatoin.IsNumber(txtFees.Text))
+            if (!clsValidation.IsNumber(txtFees.Text))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtFees, "Invalid Number.");

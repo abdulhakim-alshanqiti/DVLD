@@ -106,5 +106,10 @@ namespace DVLD
          ;
             TestTypesForm.ShowDialog();
         }
+
+        private void FormClosed_MainForm(object sender, FormClosedEventArgs e)
+        {
+            _frmLogin.Close();
+        }
     }
 }

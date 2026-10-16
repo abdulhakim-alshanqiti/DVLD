@@ -33,6 +33,7 @@ namespace DVLD
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +41,6 @@ namespace DVLD
             this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +79,13 @@ namespace DVLD
             this.manageApplicationTypesToolStripMenuItem.Size = new System.Drawing.Size(476, 50);
             this.manageApplicationTypesToolStripMenuItem.Text = "Manage Application Types";
             this.manageApplicationTypesToolStripMenuItem.Click += new System.EventHandler(this.manageApplicationTypesToolStripMenuItem_Click);
+            // 
+            // manageTestTypesToolStripMenuItem
+            // 
+            this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
+            this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(476, 50);
+            this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+            this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
             // 
             // peopleToolStripMenuItem
             // 
@@ -136,13 +143,6 @@ namespace DVLD
             this.signOutToolStripMenuItem.Text = "Sign Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
-            // manageTestTypesToolStripMenuItem
-            // 
-            this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
-            this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(476, 50);
-            this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
-            this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.BackgroundImage = global::DVLD.Properties.Resources.ChatGPT_Image_Aug_28__2026__07_55_30_PM;
@@ -153,6 +153,7 @@ namespace DVLD
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosed_MainForm);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();

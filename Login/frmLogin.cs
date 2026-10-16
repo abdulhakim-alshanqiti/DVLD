@@ -9,10 +9,6 @@ namespace DVLD.Login
         frmMain Mainform;
 
 
-        // Declare an event using the delegate
-
-
-
         public frmLogin()
         {
             InitializeComponent();
@@ -117,18 +113,6 @@ namespace DVLD.Login
             }
 
         }
-        private void BtnClose_Click(object sender, System.EventArgs e) => this.Close();
-
-        private void _closeMainForm()
-        {
-            Mainform.Dispose();
-            this.Show();
-            _PopulateRemembderMeInfo();
-        }
-        private void DataBackEvent(object sender, FormClosedEventArgs e) => _closeMainForm();
-
-
-        private void DataBackEvent(object sender) => _closeMainForm();
 
 
     }
