@@ -65,7 +65,7 @@ namespace DVLD.Tests
 
             _TestType.Title = txtTitle.Text.Trim();
             _TestType.Description = txtDescription.Text.Trim();
-            _TestType.Fees = Convert.ToSingle(txtFees.Text.Trim());
+            _TestType.Fees = Convert.ToDecimal(txtFees.Text.Trim());
 
 
             if (_TestType.Save())

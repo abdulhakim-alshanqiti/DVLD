@@ -49,7 +49,7 @@ namespace DVLD.Applications
             }
 
             _ApplicationType.Title = txtTitle.Text.Trim();
-            _ApplicationType.Fees = Convert.ToSingle(txtFees.Text.Trim());
+            _ApplicationType.Fees = Convert.ToDecimal(txtFees.Text.Trim());
 
 
             if (_ApplicationType.Save())
